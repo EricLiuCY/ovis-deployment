@@ -11,6 +11,6 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Homepage>
 ) {
-  const data = await fetchHomePage();
+  const data = await fetchHomePage('en');
   res.json(data);
 }

@@ -20,7 +20,7 @@ export default function Team(props: { data: Homepage}) {
 }
 
 export const getServerSideProps = async (context: NextPageContext) => {
-  const data = await fetchHomePage();
+  const data = await fetchHomePage('en');
   console.log(data)
   return {
     props: {

@@ -52,11 +52,11 @@ export interface Homepage extends SanityDocument {
   name: string;
 
   /**
-   * Value Proposition — `localeString`
+   * Value Proposition — `string`
    *
    *
    */
-  valueProp: LocaleString;
+  valueProp: string;
 
   /**
    * Core Values — `array`
@@ -66,15 +66,15 @@ export interface Homepage extends SanityDocument {
   coreValues: Array<SanityKeyed<CoreValue>>;
 
   /**
-   * Mission Statement — `localeText`
+   * Mission Statement — `text`
    *
    *
    */
-  missionStatement: LocaleText;
+  missionStatement: text;
 }
 
-export type LocaleString = {
-  _type: "localeString";
+export type string = {
+  _type: "string";
   /**
    * English — `string`
    *
@@ -104,8 +104,8 @@ export type LocaleString = {
   zht?: string;
 };
 
-export type LocaleText = {
-  _type: "localeText";
+export type text = {
+  _type: "text";
   /**
    * English — `text`
    *
@@ -145,18 +145,18 @@ export type CoreValue = {
   name: string;
 
   /**
-   * Core Value — `localeString`
+   * Core Value — `string`
    *
    *
    */
-  coreValue: LocaleString;
+  coreValue: string;
 
   /**
-   * Description of your core value — `localeText`
+   * Description of your core value — `text`
    *
    *
    */
-  description: LocaleText;
+  description: text;
 };
 
 export type Documents = Homepage;

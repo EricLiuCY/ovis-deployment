@@ -1,6 +1,7 @@
 import { createClient, SanityClient } from '@sanity/client'
+import { DEFAULT_LANG } from '../../GROQ/utils/defaultLang'
 
-export const getClient = (preview = false): SanityClient =>
+const getClient = (preview = false): SanityClient =>
   createClient({
     projectId: 'byi6f4gi',
     dataset: 'production',
@@ -8,6 +9,10 @@ export const getClient = (preview = false): SanityClient =>
     ...(preview && { token: process.env.SANITY_API_SECRET }),
     apiVersion: 'v1',
   })
+
+const sanityClient = getClient();
+
+export const sanityFetch = async (query: string, lang: string) => sanityClient.fetch(query, { lang, defaultLang: DEFAULT_LANG})
 
 export const overlayDrafts = (docs: any[]): any[] => {
   const documents = docs || []
@@ -24,4 +29,4 @@ export const overlayDrafts = (docs: any[]): any[] => {
   return Array.from(overlayed.values())
 }
 
-export default getClient()
+export default sanityFetch
