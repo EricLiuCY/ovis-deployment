@@ -2,8 +2,7 @@ import { Inter } from 'next/font/google'
 import styled from 'styled-components'
 import About from '../components/Home/About'
 import Hero from '../components/Home/Hero'
-
-const inter = Inter({ subsets: ['latin'] })
+import Jacklin from '../components/Home/Jacklin'
 
 const Video = styled.video`
   width: 100%;
@@ -36,7 +35,7 @@ export default function Home() {
       {/* Page Structure */}
       <Hero />
       <About />
-      
+      <Jacklin />
     </Root>
   )
 }

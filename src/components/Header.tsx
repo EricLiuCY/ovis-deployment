@@ -1,8 +1,14 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import vw from '@/styles/vw';
 import Logo from '@/assets/Logo'
+import { useScrollData } from '../hooks/useScrollData';
 
-const StyledHeader = styled.header`
+interface HeaderProps {
+    scrolledPast: boolean;
+    isScrollingDown: boolean;
+}
+
+const StyledHeader = styled.header<HeaderProps>`
     width: 100%;
     object-fit: cover;
     position: fixed;
@@ -14,9 +20,17 @@ const StyledHeader = styled.header`
     justify-content: center;
     z-index: 10;
     
-    ${vw([
-        ['padding-top', 60, 40, 40]
+    ${(props) => vw([
+        ['padding-top',
+            props.scrolledPast ? 20 : 60,
+            props.scrolledPast ? 20 : 40,
+            props.scrolledPast ? 20 : 40
+        ]
     ])}
+
+    transform: translateY(${(props) => props.isScrollingDown ? '-100%' : '0'});
+
+    transition: transform 0.5s ease, padding-top 0.5s ease;
 `
 
 const StyledLogo = styled(Logo)`
@@ -27,11 +41,17 @@ const StyledLogo = styled(Logo)`
 `
 
 export default function Header() {
-    // console.log(Logo);
-  return (
-    <StyledHeader>
-        <StyledLogo />
-    </StyledHeader>
-  )
+    const scrollData = useScrollData({
+        scrolledPast: 100,
+        scrollingDown: 100
+    })
+    return (
+        <StyledHeader
+            scrolledPast={scrollData.hasScrolledPast}
+            isScrollingDown={scrollData.isScrollingDown}
+        >
+            <StyledLogo/>
+        </StyledHeader>
+    )
 }
 
