@@ -80,67 +80,8 @@ export interface Homepage extends SanityDocument {
   featureProject: FeatureProject;
 }
 
-export type string = {
-  _type: "string";
-  /**
-   * English — `string`
-   *
-   *
-   */
-  en?: string;
-
-  /**
-   * French — `string`
-   *
-   *
-   */
-  fr?: string;
-
-  /**
-   * Chinese Simplified — `string`
-   *
-   *
-   */
-  zhs?: string;
-
-  /**
-   * Chinese Traditional — `string`
-   *
-   *
-   */
-  zht?: string;
-};
-
-export type text = {
-  _type: "text";
-  /**
-   * English — `text`
-   *
-   *
-   */
-  en?: string;
-
-  /**
-   * French — `text`
-   *
-   *
-   */
-  fr?: string;
-
-  /**
-   * Chinese Simplified — `text`
-   *
-   *
-   */
-  zhs?: string;
-
-  /**
-   * Chinese Traditional — `text`
-   *
-   *
-   */
-  zht?: string;
-};
+export type string = string
+export type text = string
 
 export type CoreValue = {
   _type: "coreValue";

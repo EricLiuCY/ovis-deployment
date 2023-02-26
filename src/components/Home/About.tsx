@@ -1,9 +1,15 @@
-import styled from 'styled-components'
-import { Parallax } from 'react-scroll-parallax';
 import vw from '@/styles/vw';
+import { Parallax } from 'react-scroll-parallax';
+import styled from 'styled-components';
 import Button from '../Button';
 
 import Logo from '@/assets/Logo';
+import { CoreValue, text } from '../../../types';
+
+export interface AboutProps {
+    coreValues: CoreValue[];
+    missionStatement: text;
+}
 
 const StyledAbout = styled.section`
     width: 100%;
@@ -68,7 +74,7 @@ const _p = styled.p`
     ])} 
 `
 
-export default function About() {
+export default function About({ coreValues, missionStatement }: AboutProps) {
   return (
     <StyledAbout>
         <Overlay />
@@ -76,19 +82,13 @@ export default function About() {
             <StyledLogo />
         </Watermark>
         <CoreValues className="h2_large">
-            ETHICS<br/>
-            INNOVATION<br/>
-            EXCELLENCE<br/>
-            SUSTAINABILITY
+            {coreValues.map((value, index) => (
+                <div key={index}> {value.coreValue} </div>
+            ))}
         </CoreValues>
         <MissionStatement>
             <_p>
-                At OVIS Group, our mission is to be the premier developer of multi-family rental 
-                properties in the markets we serve. We strive to exceed the expectations of our 
-                residents by creating exceptional properties that are thoughtfully designed, expertly 
-                crafted, eco-friendly, and located in the most desirable neighborhoods. With a focus 
-                on innovation, service, and sustainability, we aim to be a leader in our industry and 
-                a valuable member of our communities.
+                {missionStatement}
             </_p>
             <Button text="About Us" />
         </MissionStatement>
