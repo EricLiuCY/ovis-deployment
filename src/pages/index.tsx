@@ -46,7 +46,7 @@ export default function Home({ homepage, theme }: HomepageProps) {
 
       {/* Page Structure */}
       <Hero valueProp={homepage.valueProp}/>
-      <About coreValues={homepage.coreValues} missionStatement={homepage.missionStatement}/>
+      <About aboutSection={homepage.aboutSection}/>
       <Jacklin />
     </Root>
   )
