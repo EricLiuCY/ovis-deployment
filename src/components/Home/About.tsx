@@ -66,7 +66,7 @@ export default function About() {
                 on innovation, service, and sustainability, we aim to be a leader in our industry and 
                 a valuable member of our communities.
             </_p>
-            <Button />
+            <Button text="About Us" />
         </MissionStatement>
     </StyledAbout>
   )
