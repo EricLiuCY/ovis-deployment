@@ -25,12 +25,14 @@ const StyledHeader = styled.header<HeaderProps>`
             props.scrolledPast ? 20 : 60,
             props.scrolledPast ? 20 : 40,
             props.scrolledPast ? 20 : 40
-        ]
+        ],
+        ['padding-bottom', 20, 20, 20]
     ])}
 
     transform: translateY(${(props) => props.isScrollingDown ? '-100%' : '0'});
+    /* background-color: ${(props) => props.scrolledPast ? '#EDC978' : 'transparent'}; */
 
-    transition: transform 0.5s ease, padding-top 0.5s ease;
+    transition: transform 0.5s ease, padding-top 0.5s ease, background-color 0.5s ease;
 `
 
 const StyledLogo = styled(Logo)`

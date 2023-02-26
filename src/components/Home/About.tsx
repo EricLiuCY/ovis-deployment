@@ -1,9 +1,13 @@
 import styled from 'styled-components'
+import { Parallax } from 'react-scroll-parallax';
 import vw from '@/styles/vw';
 import Button from '../Button';
 
+import Logo from '@/assets/Logo';
+
 const StyledAbout = styled.section`
     width: 100%;
+    height: 100vh;
     position: relative;
     color: white;
 
@@ -26,6 +30,22 @@ const Overlay = styled.div`
     top: 0;
     left: 0;
 `
+
+const Watermark = styled(Parallax)`
+    position: absolute;
+    top: 50%;
+    left: 50%;
+`
+
+const StyledLogo = styled(Logo)`
+    opacity: 0.1;
+    transform: translate(-50%, -50%);
+    ${vw([
+        ['display', 'block', 'none', 'none'],
+        ['width', 600, 0, 0],
+        ['height', 228, 0, 0],
+    ])}
+`;
 
 const CoreValues = styled.h2`
     ${vw([
@@ -52,6 +72,9 @@ export default function About() {
   return (
     <StyledAbout>
         <Overlay />
+        <Watermark translateX={[-25, 25]}>
+            <StyledLogo />
+        </Watermark>
         <CoreValues className="h2_large">
             ETHICS<br/>
             INNOVATION<br/>

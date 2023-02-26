@@ -1,7 +1,7 @@
 import '@/styles/fonts.css';
 import Lenis from '@studio-freight/lenis';
 import type { AppProps } from 'next/app';
-
+import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
 import GlobalStyle from '@/styles/global'
 import { useEffect } from 'react';
 import Header from '../components/Header';
@@ -36,7 +36,9 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Header/>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <ParallaxProvider>
+        <Component {...pageProps} />
+      </ParallaxProvider>
     </>
   )
 }
