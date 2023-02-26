@@ -73,23 +73,11 @@ export interface Homepage extends SanityDocument {
   missionStatement: text;
 
   /**
-   * Jacklin House Description — `text`
+   * Featured Project — `featureProject`
    *
    *
    */
-  jacklinHouseDesc: text;
-
-  /**
-   * Jacklin House Image — `image`
-   *
-   *
-   */
-  jacklinHouseImage: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+  featureProject: FeatureProject;
 }
 
 export type string = {
@@ -176,6 +164,66 @@ export type CoreValue = {
    *
    */
   description: text;
+};
+
+export type FeatureProject = {
+  _type: "featureProject";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * Description — `text`
+   *
+   *
+   */
+  desc: text;
+
+  /**
+   * Project Images — `array`
+   *
+   *
+   */
+  projectImages: Array<SanityKeyed<ImageWithAlt>>;
+};
+
+export type ImageWithAlt = {
+  _type: "imageWithAlt";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  image: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Alt Text — `string`
+   *
+   *
+   */
+  alt?: string;
 };
 
 export type Documents = Homepage;

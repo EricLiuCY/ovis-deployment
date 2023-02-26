@@ -12,22 +12,24 @@ const StyledP = styled.p`
 `
 
 export default function Team(props: { data: Homepage}) {
+  const images = props.data.featureProject.projectImages
   // @ts-ignore
-  const imageProps : any = useNextSanityImage(sanityClient, props.data.jacklinHouseImage)
+  const imageProps = useNextSanityImage(sanityClient, images[0].image)
   return (
     <>
       <StyledP>{props.data.valueProp}</StyledP>
       <StyledP>{props.data.valueProp}</StyledP>
       <StyledP>{props.data.valueProp}</StyledP>
-      <StyledP>{props.data.coreValues[0].name}</StyledP>\
-      <Image {...imageProps} loader={withAssetFileName} layout='responsive' alt='123'/>
+      <StyledP>{props.data.coreValues[0].name}</StyledP>
+      {/*// @ts-ignore */}
+      <Image {...imageProps} loader={withAssetFileName} layout='responsive' alt={imageProps.alt}/>
     </>
   )
 }
 
 export const getServerSideProps = async (context: NextPageContext) => {
   const data = await fetchHomePage('en');
-  console.log(data)
+  console.log(data.featureProject.projectImages)
   return {
     props: {
       data: data
