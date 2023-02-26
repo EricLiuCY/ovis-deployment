@@ -30,16 +30,20 @@ const StyledHeader = styled.header<HeaderProps>`
     ])}
 
     transform: translateY(${(props) => props.isScrollingDown ? '-100%' : '0'});
-    /* background-color: ${(props) => props.scrolledPast ? '#EDC978' : 'transparent'}; */
-
+    background-color: ${(props) => props.scrolledPast ? 'rgba(0, 0, 0, 1)' : 'transparent'};
     transition: transform 0.5s ease, padding-top 0.5s ease, background-color 0.5s ease;
 `
 
-const StyledLogo = styled(Logo)`
-    ${vw([
-        ['width', 197, 197, 131],
-        ['height', 75, 75, 50]
+const StyledLogo = styled(Logo)<HeaderProps>`
+    width: auto;
+    ${(props) => vw([
+        ['height',
+            props.scrolledPast ? 50 : 75,
+            props.scrolledPast ? 40 : 60,
+            props.scrolledPast ? 30 : 50
+        ],
     ])}
+    transition: height 0.5s ease;
 `
 
 export default function Header() {
@@ -52,7 +56,10 @@ export default function Header() {
             scrolledPast={scrollData.hasScrolledPast}
             isScrollingDown={scrollData.isScrollingDown}
         >
-            <StyledLogo/>
+            <StyledLogo
+                scrolledPast={scrollData.hasScrolledPast}
+                isScrollingDown={scrollData.isScrollingDown}
+            />
         </StyledHeader>
     )
 }

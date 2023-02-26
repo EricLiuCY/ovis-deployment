@@ -12,7 +12,7 @@ export interface AboutProps {
 
 const StyledAbout = styled.section`
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
     position: relative;
     color: white;
 
@@ -21,7 +21,9 @@ const StyledAbout = styled.section`
         ['padding-bottom', 90, 120, 80],
         ['padding-left', 120, 60, 20],
         ['padding-right', 120, 60, 20],
-        ['min-height', 900, 0, 0],
+        ['min-height', 900, 'unset', 'unset'],
+        ['max-height', 1200, 'unset', 'unset'],
+        ['height', '100vh', 'auto', 'auto']
     ])}
 `
 

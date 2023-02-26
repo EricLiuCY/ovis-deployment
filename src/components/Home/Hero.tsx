@@ -19,20 +19,21 @@ const Transition = styled.div`
 
     background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
     ${vw([
-        ['height', 200, 100, 150]
+        ['height', '50%', 100, 150]
     ])}
 `
 
 const Strapline = styled.h1`
     text-align: center;
     position: absolute;
-    /* bottom:  */
     left: 50%;
     transform: translateX(-50%);
     color: white;
     ${vw([
-        ['width', 530, 546, 360],
-        ['bottom', 60, 40, 40]
+        ['width', 1000, '100%', '100%'],
+        ['bottom', 60, 40, 40],
+        ['padding-left', 120, 60, 20],
+        ['padding-right', 120, 60, 20],
     ])}
 `
 

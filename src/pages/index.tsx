@@ -24,12 +24,6 @@ const Video = styled.video`
   z-index: -1;
 `
 
-const Red = styled.div`
-  background: red;
-  height: 100px;
-  width: 100px;
-`
-
 const Root = styled.main`
   position: relative;
 `
