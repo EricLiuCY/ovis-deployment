@@ -71,6 +71,25 @@ export interface Homepage extends SanityDocument {
    *
    */
   missionStatement: text;
+
+  /**
+   * Jacklin House Description — `text`
+   *
+   *
+   */
+  jacklinHouseDesc: text;
+
+  /**
+   * Jacklin House Image — `image`
+   *
+   *
+   */
+  jacklinHouseImage: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
 }
 
 export type string = {

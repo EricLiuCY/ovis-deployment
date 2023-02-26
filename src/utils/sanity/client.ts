@@ -29,4 +29,4 @@ export const overlayDrafts = (docs: any[]): any[] => {
   return Array.from(overlayed.values())
 }
 
-export default sanityFetch
+export default getClient()
