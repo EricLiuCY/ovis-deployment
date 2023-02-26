@@ -19,7 +19,12 @@ const StyledHeader = styled.header<HeaderProps>`
     align-items: center;
     justify-content: center;
     z-index: 10;
-    
+    transform: translateY(${(props) => props.isScrollingDown ? '-100%' : '0'});
+    /* background-image: ${(props) => props.scrolledPast ? 'linear-gradient(180deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.1) 100%)' : 'transparent'}; */
+    transition: transform 0.5s ease, padding-top 0.5s ease, background-color 0.5s ease;
+
+    background-position: 100% 100%;
+
     ${(props) => vw([
         ['padding-top',
             props.scrolledPast ? 20 : 60,
@@ -28,14 +33,11 @@ const StyledHeader = styled.header<HeaderProps>`
         ],
         ['padding-bottom', 20, 20, 20]
     ])}
-
-    transform: translateY(${(props) => props.isScrollingDown ? '-100%' : '0'});
-    background-color: ${(props) => props.scrolledPast ? 'rgba(0, 0, 0, 1)' : 'transparent'};
-    transition: transform 0.5s ease, padding-top 0.5s ease, background-color 0.5s ease;
 `
 
 const StyledLogo = styled(Logo)<HeaderProps>`
     width: auto;
+    transition: height 0.5s ease;
     ${(props) => vw([
         ['height',
             props.scrolledPast ? 50 : 75,
@@ -43,7 +45,6 @@ const StyledLogo = styled(Logo)<HeaderProps>`
             props.scrolledPast ? 30 : 50
         ],
     ])}
-    transition: height 0.5s ease;
 `
 
 export default function Header() {
