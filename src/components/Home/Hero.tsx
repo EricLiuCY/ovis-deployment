@@ -11,7 +11,7 @@ const StyledHero = styled.section`
     position: relative;
     ${vw([
         ['min-height', 600, 400, 400],
-        ['height', '100vh', '100vh', '90vh']
+        ['height', '100vh', '100vh', '100vh']
     ])}
 `
 
@@ -35,7 +35,7 @@ const Strapline = styled.h1`
     color: white;
     ${vw([
         ['width', 1000, '100%', '100%'],
-        ['bottom', 60, 40, 100],
+        ['bottom', 60, 40, '15vh'],
         ['padding-left', 120, 60, 20],
         ['padding-right', 120, 60, 20],
     ])}
