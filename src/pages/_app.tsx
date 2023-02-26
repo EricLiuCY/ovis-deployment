@@ -1,7 +1,10 @@
-import '@/styles/globals.css'
+import '@/styles/fonts.css';
 import Lenis from '@studio-freight/lenis';
-import { useEffect, useState } from 'react';
-import type { AppProps } from 'next/app'
+import type { AppProps } from 'next/app';
+
+import GlobalStyle from '@/styles/global'
+import { useEffect } from 'react';
+import Header from '../components/Header';
 
 export default function App({ Component, pageProps }: AppProps) {
   useEffect(() => {
@@ -29,5 +32,11 @@ export default function App({ Component, pageProps }: AppProps) {
     
     requestAnimationFrame(raf)
   }, [])
-  return <Component {...pageProps} />
+  return (
+    <>
+      <Header/>
+      <GlobalStyle />
+      <Component {...pageProps} />
+    </>
+  )
 }
