@@ -72,9 +72,9 @@ export default function About() {
   return (
     <StyledAbout>
         <Overlay />
-        <Watermark translateX={[-25, 25]}>
+        {/* <Watermark translateX={[-25, 25]}>
             <StyledLogo />
-        </Watermark>
+        </Watermark> */}
         <CoreValues className="h2_large">
             ETHICS<br/>
             INNOVATION<br/>
