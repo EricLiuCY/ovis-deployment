@@ -34,6 +34,46 @@ const GlobalStyle = createGlobalStyle`
             ['font-size', 64, 48, 28],
         ])}
     }
+
+    h1 {
+        line-height: 1.2;
+        font-weight: 400;
+        ${vw([
+            ['font-size', 48, 32, 32],
+        ])}
+    }
+
+    h2 {
+        line-height: 1.2;
+        font-weight: 400;
+        ${vw([
+            ['font-size', 36, 24, 24],
+        ])}
+    }
+
+    h3 {
+        line-height: 1.2;
+        font-weight: 400;
+        ${vw([
+            ['font-size', 28, 18, 18],
+        ])}
+    }
+
+    .strapline {
+        font-weight: 700;
+        letter-spacing: 25%;
+        text-transform: uppercase;
+        ${vw([
+            ['font-size', 20, 16, 16],
+        ])}
+    }
+
+    p {
+        line-height: 1.35;
+        ${vw([
+            ['font-size', 16, 14, 14],
+        ])}
+    }
 `;
 
 export default GlobalStyle;

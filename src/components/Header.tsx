@@ -1,9 +1,7 @@
 import { Inter } from 'next/font/google'
 import styled from 'styled-components'
 import vw from '@/styles/vw';
-import { ReactComponent as Logo } from '@/assets/logo.svg'
-
-const inter = Inter({ subsets: ['latin'] })
+import Logo from '@/assets/logo.svg'
 
 const StyledHeader = styled.header`
     width: 100%;
@@ -12,10 +10,11 @@ const StyledHeader = styled.header`
     position: fixed;
     top: 0;
     left: 0;
-    background: white;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10;
 `
 
 // const StyledLogo = styled(Logo)`
@@ -26,9 +25,11 @@ const StyledHeader = styled.header`
 // `
 
 export default function Header() {
+    console.log(Logo);
   return (
     <StyledHeader>
-        <Logo />
+        {/* <Logo /> */}
+        Header
     </StyledHeader>
   )
 }
