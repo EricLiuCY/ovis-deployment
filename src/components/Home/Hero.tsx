@@ -8,13 +8,15 @@ const StyledHero = styled.section`
 `
 
 const Transition = styled.div`
-position: absolute;
-width: 1760px;
-height: 200px;
-left: 0px;
-top: 700px;
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
 
-background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    ${vw([
+        ['height', 200, 100, 150]
+    ])}
 `
 
 const Strapline = styled.h1`

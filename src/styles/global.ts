@@ -26,10 +26,11 @@ const GlobalStyle = createGlobalStyle`
         margin: 0;
     }
 
-    .h1_large {
+    .h2_large {
         line-height: 1.2;
         letter-spacing: -5%;
         font-weight: 400;
+        text-transform: uppercase;
         ${vw([
             ['font-size', 64, 48, 28],
         ])}
