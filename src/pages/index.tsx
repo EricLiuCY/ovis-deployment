@@ -34,7 +34,7 @@ export default function Home({ homepage, theme }: HomepageProps) {
   return (
     <Root>
       {/* Background */}
-      <Video autoPlay loop muted>
+      <Video autoPlay loop muted playsInline>
         <source src={backgroundVideo.url} />
       </Video>
 
