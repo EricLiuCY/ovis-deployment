@@ -2,10 +2,10 @@ import { NextPageContext } from 'next'
 import { useNextSanityImage } from 'next-sanity-image'
 import Image from 'next/image'
 import styled from 'styled-components'
-import { Homepage } from '../../../types'
-import fetchHomePage from '../../GROQ/quries/fetchHomepage'
-import { withAssetFileName } from '../../utils/sanity'
-import sanityClient from '../../utils/sanity/client'
+import { Homepage } from '@/../types'
+import fetchHomePage from '@/GROQ/quries/fetchHomepage'
+import { withAssetFileName } from '@/utils/sanity/index'
+import sanityClient from '@/utils/sanity/client'
 
 const StyledP = styled.p`
   color: red;
