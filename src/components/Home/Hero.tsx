@@ -9,6 +9,10 @@ const StyledHero = styled.section`
     width: 100%;
     height: 100vh;
     position: relative;
+    ${vw([
+        ['min-height', 600, 400, 400],
+        ['height', '100vh', '100vh', '90vh']
+    ])}
 `
 
 const Transition = styled.div`
