@@ -49,7 +49,6 @@ export default function Home({ data }: HomepageProps) {
 
 export const getServerSideProps : GetServerSideProps<HomepageProps> = async () => {
   const data = await fetchHomePage('en');
-  console.log(data.featureProject.projectImages)
   return {
     props: {
       data: data
