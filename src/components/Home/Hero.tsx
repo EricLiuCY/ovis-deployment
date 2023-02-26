@@ -35,7 +35,7 @@ const Strapline = styled.h1`
     color: white;
     ${vw([
         ['width', 1000, '100%', '100%'],
-        ['bottom', 60, 40, 40],
+        ['bottom', 60, 40, 100],
         ['padding-left', 120, 60, 20],
         ['padding-right', 120, 60, 20],
     ])}
