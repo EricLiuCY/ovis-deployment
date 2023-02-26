@@ -45,32 +45,118 @@ export interface Homepage extends SanityDocument {
   _type: "homepage";
 
   /**
-   * Title — `string`
+   * Name of document, DO NOT CHANGE — `string`
    *
    *
    */
-  title: string;
+  name: string;
 
   /**
-   * subtitle — `string`
+   * Value Proposition — `localeString`
    *
    *
    */
-  subtitle: string;
+  valueProp: LocaleString;
 
   /**
-   * Body 1 — `text`
+   * Core Values — `array`
    *
    *
    */
-  body_1: string;
+  coreValues: Array<SanityKeyed<CoreValue>>;
 
   /**
-   * Body 1 — `text`
+   * Mission Statement — `localeText`
    *
    *
    */
-  body_2: string;
+  missionStatement: LocaleText;
 }
+
+export type LocaleString = {
+  _type: "localeString";
+  /**
+   * English — `string`
+   *
+   *
+   */
+  en?: string;
+
+  /**
+   * French — `string`
+   *
+   *
+   */
+  fr?: string;
+
+  /**
+   * Chinese Simplified — `string`
+   *
+   *
+   */
+  zhs?: string;
+
+  /**
+   * Chinese Traditional — `string`
+   *
+   *
+   */
+  zht?: string;
+};
+
+export type LocaleText = {
+  _type: "localeText";
+  /**
+   * English — `text`
+   *
+   *
+   */
+  en?: string;
+
+  /**
+   * French — `text`
+   *
+   *
+   */
+  fr?: string;
+
+  /**
+   * Chinese Simplified — `text`
+   *
+   *
+   */
+  zhs?: string;
+
+  /**
+   * Chinese Traditional — `text`
+   *
+   *
+   */
+  zht?: string;
+};
+
+export type CoreValue = {
+  _type: "coreValue";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Core Value — `localeString`
+   *
+   *
+   */
+  coreValue: LocaleString;
+
+  /**
+   * Description of your core value — `localeText`
+   *
+   *
+   */
+  description: LocaleText;
+};
 
 export type Documents = Homepage;

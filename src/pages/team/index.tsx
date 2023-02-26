@@ -11,10 +11,10 @@ const StyledP = styled.p`
 export default function Team(props: { data: Homepage}) {
   return (
     <>
-      <StyledP>{props.data.title}</StyledP>
-      <StyledP>{props.data.subtitle}</StyledP>
-      <StyledP>{props.data.body_1}</StyledP>
-      <StyledP>{props.data.body_2}</StyledP>
+      <StyledP>{props.data.valueProp.zhs}</StyledP>
+      <StyledP>{props.data.valueProp.zhs}</StyledP>
+      <StyledP>{props.data.valueProp.zhs}</StyledP>
+      <StyledP>{props.data.coreValues[0].coreValue.zhs}</StyledP>
     </>
   )
 }
