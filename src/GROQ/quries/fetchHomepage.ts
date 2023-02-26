@@ -1,7 +1,8 @@
+import { Homepage } from '../../../types';
 import { getClient } from '../../utils/sanity/initClient';
 import HomepageGROQ from '../fragments/homepage';
 
-const fetchHomePage = async () : Promise<any> => {
+const fetchHomePage = async () : Promise<Homepage> => {
   const data = await getClient().fetch(
     HomepageGROQ
   )

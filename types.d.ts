@@ -49,28 +49,28 @@ export interface Homepage extends SanityDocument {
    *
    *
    */
-  title?: string;
+  title: string;
 
   /**
    * subtitle — `string`
    *
    *
    */
-  subtitle?: string;
+  subtitle: string;
 
   /**
    * Body 1 — `text`
    *
    *
    */
-  body_1?: string;
+  body_1: string;
 
   /**
    * Body 1 — `text`
    *
    *
    */
-  body_2?: string;
+  body_2: string;
 }
 
 export type Documents = Homepage;
