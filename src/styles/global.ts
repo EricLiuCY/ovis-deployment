@@ -14,6 +14,7 @@ const GlobalStyle = createGlobalStyle`
     body,
     #app {
         width: 100%;
+        overflow-x: hidden;
         /* height: 100%; */
         min-height: 100%;
         height: auto;

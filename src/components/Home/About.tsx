@@ -4,7 +4,6 @@ import Button from '../Button';
 
 const StyledAbout = styled.section`
     width: 100%;
-    height: 100vh;
     position: relative;
     color: white;
 
@@ -13,13 +12,15 @@ const StyledAbout = styled.section`
         ['padding-bottom', 90, 120, 80],
         ['padding-left', 120, 60, 20],
         ['padding-right', 120, 60, 20],
+        ['min-height', 900, 0, 0],
     ])}
 `
 
 const Overlay = styled.div`
     position: absolute;
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    /* height: 100vh; */
     background: rgba(0, 0, 0, 0.5);
     z-index: -1;
     top: 0;
