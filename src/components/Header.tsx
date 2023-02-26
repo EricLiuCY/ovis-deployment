@@ -1,7 +1,7 @@
 import { Inter } from 'next/font/google'
 import styled from 'styled-components'
 import vw from '@/styles/vw';
-import Logo from '@/assets/logo.svg'
+// import Logo from '@/assets/logo.svg'
 
 const StyledHeader = styled.header`
     width: 100%;
@@ -25,7 +25,7 @@ const StyledHeader = styled.header`
 // `
 
 export default function Header() {
-    console.log(Logo);
+    // console.log(Logo);
   return (
     <StyledHeader>
         {/* <Logo /> */}
