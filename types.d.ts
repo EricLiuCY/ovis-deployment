@@ -80,6 +80,29 @@ export interface Homepage extends SanityDocument {
   featureProject: FeatureProject;
 }
 
+/**
+ * Theme
+ *
+ *
+ */
+export interface Theme extends SanityDocument {
+  _type: "theme";
+
+  /**
+   * Name of document, DO NOT CHANGE — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Background Video — `file`
+   *
+   *
+   */
+  backgroundVideo: { _type: "file"; asset: SanityReference<any> };
+}
+
 export type string = string
 export type text = string
 
@@ -167,4 +190,4 @@ export type ImageWithAlt = {
   alt?: string;
 };
 
-export type Documents = Homepage;
+export type Documents = Homepage | Theme;

@@ -1,14 +1,17 @@
 import { GetServerSideProps } from 'next'
-import { Inter } from 'next/font/google'
 import styled from 'styled-components'
-import { Homepage } from '../../types'
+import { Homepage, Theme } from '../../types'
 import About from '../components/Home/About'
 import Hero from '../components/Home/Hero'
 import Jacklin from '../components/Home/Jacklin'
 import fetchHomePage from '../GROQ/quries/fetchHomepage'
+import fetchTheme from '../GROQ/quries/fetchTheme'
+import { getFileAsset } from '@sanity/asset-utils'
+import client from '../utils/sanity/client'
 
 export interface HomepageProps {
-  data: Homepage
+  homepage: Homepage
+  theme: Theme
 }
 
 const Video = styled.video`
@@ -31,27 +34,31 @@ const Root = styled.main`
   position: relative;
 `
 
-export default function Home({ data }: HomepageProps) {
+export default function Home({ homepage, theme }: HomepageProps) {
+  const videoAssetFor = (source: any) => source && getFileAsset(source, client.config())
+  const backgroundVideo = videoAssetFor(theme.backgroundVideo)
   return (
     <Root>
       {/* Background */}
       <Video autoPlay loop muted>
-        <source src={'/background.mp4'} />
+        <source src={backgroundVideo.url} />
       </Video>
 
       {/* Page Structure */}
-      <Hero valueProp={data.valueProp}/>
-      <About coreValues={data.coreValues} missionStatement={data.missionStatement}/>
+      <Hero valueProp={homepage.valueProp}/>
+      <About coreValues={homepage.coreValues} missionStatement={homepage.missionStatement}/>
       <Jacklin />
     </Root>
   )
 }
 
 export const getServerSideProps : GetServerSideProps<HomepageProps> = async () => {
-  const data = await fetchHomePage('en');
+  const homepage = await fetchHomePage('en');
+  const theme = await fetchTheme('en');
   return {
     props: {
-      data: data
+      homepage,
+      theme
     },
   }
 }
