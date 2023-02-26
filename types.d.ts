@@ -59,18 +59,11 @@ export interface Homepage extends SanityDocument {
   valueProp: string;
 
   /**
-   * Core Values — `array`
+   * About Section — `aboutSection`
    *
    *
    */
-  coreValues: Array<SanityKeyed<CoreValue>>;
-
-  /**
-   * Mission Statement — `text`
-   *
-   *
-   */
-  missionStatement: text;
+  aboutSection: AboutSection;
 
   /**
    * Featured Project — `featureProject`
@@ -102,9 +95,6 @@ export interface Theme extends SanityDocument {
    */
   backgroundVideo: { _type: "file"; asset: SanityReference<any> };
 }
-
-export type string = string
-export type text = string
 
 export type CoreValue = {
   _type: "coreValue";
@@ -154,6 +144,13 @@ export type FeatureProject = {
   desc: text;
 
   /**
+   * CTA — `string`
+   *
+   *
+   */
+  cta: string;
+
+  /**
    * Project Images — `array`
    *
    *
@@ -188,6 +185,30 @@ export type ImageWithAlt = {
    *
    */
   alt?: string;
+};
+
+export type AboutSection = {
+  _type: "aboutSection";
+  /**
+   * Core Values — `array`
+   *
+   *
+   */
+  coreValues: Array<SanityKeyed<CoreValue>>;
+
+  /**
+   * Mission Statement — `text`
+   *
+   *
+   */
+  missionStatement: text;
+
+  /**
+   * CTA — `string`
+   *
+   *
+   */
+  cta: string;
 };
 
 export type Documents = Homepage | Theme;

@@ -4,11 +4,10 @@ import styled from 'styled-components';
 import Button from '../Button';
 
 import Logo from '@/assets/Logo';
-import { CoreValue, text } from '../../../types';
+import { AboutSection } from '../../../types';
 
 export interface AboutProps {
-    coreValues: CoreValue[];
-    missionStatement: text;
+    aboutSection: AboutSection
 }
 
 const StyledAbout = styled.section`
@@ -74,7 +73,7 @@ const _p = styled.p`
     ])} 
 `
 
-export default function About({ coreValues, missionStatement }: AboutProps) {
+export default function About({ aboutSection }: AboutProps) {
   return (
     <StyledAbout>
         <Overlay />
@@ -82,15 +81,15 @@ export default function About({ coreValues, missionStatement }: AboutProps) {
             <StyledLogo />
         </Watermark>
         <CoreValues className="h2_large">
-            {coreValues.map((value, index) => (
+            {aboutSection.coreValues.map((value, index) => (
                 <div key={index}> {value.coreValue} </div>
             ))}
         </CoreValues>
         <MissionStatement>
             <_p>
-                {missionStatement}
+                {aboutSection.missionStatement}
             </_p>
-            <Button text="About Us" />
+            <Button text={aboutSection.cta} />
         </MissionStatement>
     </StyledAbout>
   )

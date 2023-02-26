@@ -20,7 +20,6 @@ export default function Team(props: { data: Homepage}) {
       <StyledP>{props.data.valueProp}</StyledP>
       <StyledP>{props.data.valueProp}</StyledP>
       <StyledP>{props.data.valueProp}</StyledP>
-      <StyledP>{props.data.coreValues[0].name}</StyledP>
       {/*// @ts-ignore */}
       <Image {...imageProps} loader={withAssetFileName} layout='responsive' alt={imageProps.alt}/>
     </>
