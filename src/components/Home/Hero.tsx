@@ -1,6 +1,10 @@
 import styled from 'styled-components'
 import vw from '@/styles/vw';
 
+export interface HeroProps {
+    valueProp: string
+}
+
 const StyledHero = styled.section`
     width: 100%;
     height: 100vh;
@@ -32,13 +36,12 @@ const Strapline = styled.h1`
     ])}
 `
 
-export default function Hero() {
+export default function Hero({ valueProp} : HeroProps) {
   return (
     <StyledHero>
         <Transition />
         <Strapline className='strapline'>
-            Redefining Modern Western Coast Living
-            Through Ethical Development Practices
+            {valueProp}
         </Strapline>
     </StyledHero>
   )

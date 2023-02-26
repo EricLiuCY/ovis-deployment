@@ -11,17 +11,12 @@ const StyledP = styled.p`
 export default function Team(props: { data: Homepage}) {
   return (
     <>
-      <StyledP>{props.data.valueProp.zhs}</StyledP>
-      <StyledP>{props.data.valueProp.zhs}</StyledP>
-      <StyledP>{props.data.valueProp.zhs}</StyledP>
-      <StyledP>{props.data.coreValues[0].coreValue.zhs}</StyledP>
     </>
   )
 }
 
 export const getServerSideProps = async (context: NextPageContext) => {
   const data = await fetchHomePage('en');
-  console.log(data)
   return {
     props: {
       data: data
