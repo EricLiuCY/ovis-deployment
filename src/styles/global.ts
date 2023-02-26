@@ -28,7 +28,7 @@ const GlobalStyle = createGlobalStyle`
 
     .h2_large {
         line-height: 1.2;
-        letter-spacing: -5%;
+        letter-spacing: -0.05em;
         font-weight: 400;
         text-transform: uppercase;
         ${vw([
@@ -62,7 +62,7 @@ const GlobalStyle = createGlobalStyle`
 
     .strapline {
         font-weight: 700;
-        letter-spacing: 25%;
+        letter-spacing: 0.25em;
         text-transform: uppercase;
         ${vw([
             ['font-size', 20, 16, 16],
@@ -71,6 +71,15 @@ const GlobalStyle = createGlobalStyle`
 
     p {
         line-height: 1.35;
+        ${vw([
+            ['font-size', 16, 14, 14],
+        ])}
+    }
+
+    .button {
+        font-weight: 700;
+        letter-spacing: 0.25em;
+        text-transform: uppercase;
         ${vw([
             ['font-size', 16, 14, 14],
         ])}
