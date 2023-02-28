@@ -24,6 +24,10 @@ const HomepageGROQ = groq`
       ...,
     },
     'partnerOverviews': partnerOverviews[]{
+      'profilePicture': profilePicture{
+        'alt': coalesce(alt[$lang], alt[$defaultLang], "Missing translation"),
+        ...,
+      },
       'founderName': coalesce(founderName[$lang], founderName[$defaultLang], "Missing translation"),
       'founderTitle': coalesce(founderTitle[$lang], founderTitle[$defaultLang], "Missing translation"),
       'founderSummary': coalesce(founderSummary[$lang], founderSummary[$defaultLang], "Missing translation"),

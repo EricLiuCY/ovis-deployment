@@ -84,11 +84,12 @@ const _p = styled.p`
 
 function PartnerOverview({ partnerOverview }: PartnerOverviewProps) {
     // @ts-ignore
-    const imageProps = useNextSanityImage(sanityClient, partnerOverview.profilePicture)
+    const imageProps = useNextSanityImage(sanityClient, partnerOverview.profilePicture.image)
+    console.log('asdasd', imageProps)
     return (
         <div>
             {/*// @ts-ignore */}
-            <Image {...imageProps} loader={withAssetFileName} height={100} width={50} alt={'asd'}/>
+            <Image {...imageProps} loader={withAssetFileName} height={100} width={50} alt={partnerOverview.profilePicture}/>
             <h2>{partnerOverview.founderName}</h2>
             <h2>{partnerOverview.founderTitle}</h2>
             <h2>{partnerOverview.founderSummary}</h2>

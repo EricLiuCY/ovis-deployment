@@ -43,9 +43,9 @@ export default function Home({ homepage, theme }: HomepageProps) {
       <Hero valueProp={homepage.valueProp}/>
       <About aboutSection={homepage.aboutSection}/>
       <Jacklin />
-      <PartnerOverview
+      {/* <PartnerOverview
         partnerOverviews={homepage.partnerOverviews}
-      />
+      /> */}
     </Root>
   )
 }

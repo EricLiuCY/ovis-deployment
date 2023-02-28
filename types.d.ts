@@ -52,18 +52,18 @@ export interface AboutUsPage extends SanityDocument {
   name: string;
 
   /**
-   * Company Description — `text`
+   * Company Description — `string`
    *
    *
    */
-  companyDescription: text;
+  companyDescription: string;
 
   /**
    * Founders — `array`
    *
    *
    */
-  parterDetails: Array<SanityKeyed<PartnerDetail>>;
+  partnerDetails: Array<SanityKeyed<PartnerDetail>>;
 }
 
 /**
@@ -103,7 +103,7 @@ export interface Homepage extends SanityDocument {
   featureProject: FeatureProject;
 
   /**
-   * Partner Overview — `array`
+   * Partner Overviews — `array`
    *
    *
    */
@@ -133,6 +133,62 @@ export interface Theme extends SanityDocument {
   backgroundVideo: { _type: "file"; asset: SanityReference<any> };
 }
 
+export type AdditionalContentBlock = {
+  _type: "additionalContentBlock";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * Additional Description — `block`
+   *
+   *
+   */
+  additionalDescription?: block;
+};
+
+export type AdditionalContentImage = {
+  _type: "additionalContentImage";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * Additional Content Image — `imageWithAlt`
+   *
+   *
+   */
+  additionalContentImage: ImageWithAlt;
+
+  /**
+   * Description — `string`
+   *
+   *
+   */
+  description: string;
+};
+
+
 export type CoreValue = {
   _type: "coreValue";
   /**
@@ -150,11 +206,11 @@ export type CoreValue = {
   coreValue: string;
 
   /**
-   * Description of your core value — `text`
+   * Description of your core value — `string`
    *
    *
    */
-  description: text;
+  description: string;
 };
 
 export type FeatureProject = {
@@ -174,11 +230,11 @@ export type FeatureProject = {
   title: string;
 
   /**
-   * Description — `text`
+   * Description — `string`
    *
    *
    */
-  desc: text;
+  desc: string;
 
   /**
    * CTA — `string`
@@ -241,11 +297,11 @@ export type AboutSection = {
   coreValues: Array<SanityKeyed<CoreValue>>;
 
   /**
-   * Mission Statement — `text`
+   * Mission Statement — `string`
    *
    *
    */
-  missionStatement: text;
+  missionStatement: string;
 
   /**
    * CTA — `string`
@@ -265,16 +321,11 @@ export type PartnerDetail = {
   name: string;
 
   /**
-   * Profile Picture — `image`
+   * Profile Picture — `imageWithAlt`
    *
    *
    */
-  profilePicture: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+  profilePicture: ImageWithAlt;
 
   /**
    * Founder Name — `string`
@@ -298,19 +349,19 @@ export type PartnerDetail = {
   founderSubtitle: string;
 
   /**
-   * Founder Description — `array`
+   * Founder Description — `block`
    *
    *
    */
-  founderDescription: Array<SanityKeyed<block>>;
+  founderDescription: block;
 
   /**
-   * Additional Content — `array`
+   * Additional Contents — `array`
    *
    *
    */
-  additionalContent?: Array<
-    SanityKeyed<block> | SanityKeyed<ImageWithAlt>
+  additionalContents?: Array<
+    SanityKeyed<AdditionalContentBlock> | SanityKeyed<AdditionalContentImage>
   >;
 };
 
@@ -324,16 +375,11 @@ export type PartnerOverview = {
   name: string;
 
   /**
-   * Profile Picture — `image`
+   * Profile Picture — `imageWithAlt`
    *
    *
    */
-  profilePicture: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
+  profilePicture: ImageWithAlt;
 
   /**
    * Founder Name — `string`
@@ -350,11 +396,11 @@ export type PartnerOverview = {
   founderTitle: string;
 
   /**
-   * Founder Summary — `text`
+   * Founder Summary — `string`
    *
    *
    */
-  founderSummary: text;
+  founderSummary: string;
 
   /**
    * CTA — `string`
