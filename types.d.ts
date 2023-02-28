@@ -37,6 +37,36 @@ export type {
 };
 
 /**
+ * About Us Page
+ *
+ *
+ */
+export interface AboutUsPage extends SanityDocument {
+  _type: "aboutUsPage";
+
+  /**
+   * Name of document, DO NOT CHANGE — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Company Description — `text`
+   *
+   *
+   */
+  companyDescription: text;
+
+  /**
+   * Founders — `array`
+   *
+   *
+   */
+  parterDetails: Array<SanityKeyed<PartnerDetail>>;
+}
+
+/**
  * Homepage
  *
  *
@@ -71,6 +101,13 @@ export interface Homepage extends SanityDocument {
    *
    */
   featureProject: FeatureProject;
+
+  /**
+   * Partner Overview — `array`
+   *
+   *
+   */
+  partnerOverviews: Array<SanityKeyed<PartnerOverview>>;
 }
 
 /**
@@ -190,6 +227,13 @@ export type ImageWithAlt = {
 export type AboutSection = {
   _type: "aboutSection";
   /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
    * Core Values — `array`
    *
    *
@@ -211,4 +255,113 @@ export type AboutSection = {
   cta: string;
 };
 
-export type Documents = Homepage | Theme;
+export type PartnerDetail = {
+  _type: "partnerDetail";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Profile Picture — `image`
+   *
+   *
+   */
+  profilePicture: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Founder Name — `string`
+   *
+   *
+   */
+  founderName: string;
+
+  /**
+   * Founder Title — `string`
+   *
+   *
+   */
+  founderTitle: string;
+
+  /**
+   * Founder Subtitle — `string`
+   *
+   *
+   */
+  founderSubtitle: string;
+
+  /**
+   * Founder Description — `array`
+   *
+   *
+   */
+  founderDescription: Array<SanityKeyed<block>>;
+
+  /**
+   * Additional Content — `array`
+   *
+   *
+   */
+  additionalContent?: Array<
+    SanityKeyed<block> | SanityKeyed<ImageWithAlt>
+  >;
+};
+
+export type PartnerOverview = {
+  _type: "partnerOverview";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Profile Picture — `image`
+   *
+   *
+   */
+  profilePicture: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Founder Name — `string`
+   *
+   *
+   */
+  founderName: string;
+
+  /**
+   * Founder Title — `string`
+   *
+   *
+   */
+  founderTitle: string;
+
+  /**
+   * Founder Summary — `text`
+   *
+   *
+   */
+  founderSummary: text;
+
+  /**
+   * CTA — `string`
+   *
+   *
+   */
+  cta: string;
+};
+
+export type Documents = AboutUsPage | Homepage | Theme;

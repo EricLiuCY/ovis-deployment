@@ -8,6 +8,7 @@ import fetchHomePage from '../GROQ/quries/fetchHomepage'
 import fetchTheme from '../GROQ/quries/fetchTheme'
 import { getFileAsset } from '@sanity/asset-utils'
 import client from '../utils/sanity/client'
+import PartnerOverview from '../components/Home/PartnerOverviews'
 
 export interface HomepageProps {
   homepage: Homepage
@@ -42,6 +43,9 @@ export default function Home({ homepage, theme }: HomepageProps) {
       <Hero valueProp={homepage.valueProp}/>
       <About aboutSection={homepage.aboutSection}/>
       <Jacklin />
+      <PartnerOverview
+        partnerOverviews={homepage.partnerOverviews}
+      />
     </Root>
   )
 }
