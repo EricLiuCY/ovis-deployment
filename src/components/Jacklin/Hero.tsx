@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import vw from '@/styles/vw';
-import { LocaleLines } from '../../../types';
-import LinesAndParagraphs from '../../GROQ/utils/LinesNParagraphs';
+import { LocaleLines } from '@/../types';
+import LinesAndParagraphs from '@/GROQ/utils/LinesNParagraphs';
 
 export interface HeroProps {
     valueProp: LocaleLines
@@ -23,20 +23,20 @@ const Transition = styled.div`
     left: 0;
     bottom: 0;
 
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.5) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
     ${vw([
         ['height', '50%', 100, 150]
     ])}
 `
 
-const Strapline = styled.h2`
+const Strapline = styled.h1`
     text-align: center;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     color: white;
     ${vw([
-        ['width', 1200, '100%', '100%'],
+        ['width', 1000, '100%', '100%'],
         ['bottom', 60, 40, '15vh'],
         ['padding-left', 120, 60, 20],
         ['padding-right', 120, 60, 20],
