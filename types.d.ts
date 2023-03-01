@@ -52,18 +52,25 @@ export interface AboutUsPage extends SanityDocument {
   name: string;
 
   /**
-   * Value Proposition — `string`
+   * Value Proposition — `localeLines`
    *
    *
    */
-  valueProp: string;
+  valueProp: LocaleLines;
 
   /**
-   * Company Description — `string`
+   * Description Title — `localeLines`
    *
    *
    */
-  companyDescription: string;
+  descriptionTitle: LocaleLines;
+
+  /**
+   * Company Description — `localeParagraphs`
+   *
+   *
+   */
+  companyDescription: LocaleParagraphs;
 
   /**
    * Founders — `array`
@@ -184,8 +191,8 @@ export interface Theme extends SanityDocument {
   backgroundVideo: { _type: "file"; asset: SanityReference<any> };
 }
 
-export type AdditionalContentBlock = {
-  _type: "additionalContentBlock";
+export type ContentBlock = {
+  _type: "contentBlock";
   /**
    * Name — `string`
    *
@@ -201,15 +208,15 @@ export type AdditionalContentBlock = {
   title: string;
 
   /**
-   * Additional Description — `block`
+   * Value — `block`
    *
    *
    */
-  additionalDescription?: block;
+  value: block;
 };
 
-export type AdditionalContentImage = {
-  _type: "additionalContentImage";
+export type ContentImage = {
+  _type: "contentImage";
   /**
    * Name — `string`
    *
@@ -225,11 +232,11 @@ export type AdditionalContentImage = {
   title: string;
 
   /**
-   * Additional Content Image — `imageWithAlt`
+   * Image With Alt Text — `imageWithAlt`
    *
    *
    */
-  additionalContentImage: ImageWithAlt;
+  imageWithAlt: ImageWithAlt;
 
   /**
    * Description — `string`
@@ -270,20 +277,11 @@ export type PartnerDetail = {
   founderTitle: string;
 
   /**
-   * Founder Description — `block`
+   * Content — `array`
    *
    *
    */
-  founderDescription: block;
-
-  /**
-   * Additional Contents — `array`
-   *
-   *
-   */
-  additionalContents?: Array<
-    SanityKeyed<AdditionalContentBlock> | SanityKeyed<AdditionalContentImage>
-  >;
+  content: Array<SanityKeyed<ContentBlock>>;
 };
 
 export type FeatureProject = {
@@ -362,7 +360,7 @@ export type PartnerOverview = {
    *
    *
    */
-  name: string;
+  name: "SEBASTIEN" | "JACKY" | "SEAN";
 
   /**
    * Profile Picture — `imageWithAlt`
@@ -549,7 +547,7 @@ export type ImageWithAlt = {
    *
    *
    */
-  alt?: string;
+  alt: string;
 };
 
 export type PdfFileLink = {

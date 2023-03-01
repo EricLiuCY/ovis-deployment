@@ -1,14 +1,14 @@
 import vw from '@/styles/vw';
-import { Parallax } from 'react-scroll-parallax';
+import sanityClient from '@/utils/sanity/client';
+import { withAssetFileName } from '@/utils/sanity/index';
+import { useNextSanityImage } from 'next-sanity-image';
+import Image from 'next/image';
 import styled from 'styled-components';
-import Button from '../Button';
-
-import Logo from '@/assets/Logo';
-import config from '../../utils/config';
+import { PartnerDetail } from '../../../types';
 import ContentBox from './ContentBox';
 
-export interface CompanyProps {
-    
+export interface PersonProps {
+  partnerDetail: PartnerDetail
 }
 
 const StyledPersonLeft = styled.section`
@@ -49,7 +49,7 @@ const HeadshotContainer = styled.div`
 `;
 
 // styled(Image)
-const Headshot = styled.img`
+const Headshot = styled(Image)`
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -102,25 +102,34 @@ const Content = styled.div`
   flex-direction: column;
 `
 
-export default function PersonLeft() {
+function MyImage({ image, alt }: { image: any, alt: string}) {
+  // @ts-ignore
+  const imageProps = useNextSanityImage(sanityClient, image)
   return (
-    <StyledPersonLeft>
+    <>
+      {/*// @ts-ignore */}
+      <Headshot {...imageProps} loader={withAssetFileName} alt={alt}/>
+    </>
+  )
+}
+
+export default function PersonLeft({ partnerDetail }: PersonProps) {
+  return (
+    <StyledPersonLeft id={partnerDetail.name}>
         <Overlay />
         <HeadshotContainer>
-          <Headshot
-            src="https://cdn.sanity.io/images/byi6f4gi/production/4ac5ea9a116be6dcbe46c2c401e1705e9ad301de-438x425.jpg?q=75&fit=clip&auto=format&w=640"
-          />
+          <MyImage image={partnerDetail.profilePicture.image} alt={partnerDetail.profilePicture.alt}/>
           <MinNameblock>
-            <Name className="caption">Sebastien Loboeuf</Name>
-            <Title className="subcaption">General Manager</Title>
+            <Name className="caption">{partnerDetail.founderName}</Name>
+            <Title className="subcaption">{partnerDetail.founderTitle}</Title>
           </MinNameblock>
         </HeadshotContainer>
         <Content>
           <Nameblock>
-            <Name className="caption">Sebastien Loboeuf</Name>
-            <Title className="subcaption">General Manager</Title>
+            <Name className="caption">{partnerDetail.founderName}</Name>
+            <Title className="subcaption">{partnerDetail.founderTitle}</Title>
           </Nameblock>
-          <ContentBox />
+          <ContentBox content={partnerDetail.content} />
         </Content>
         
     </StyledPersonLeft>

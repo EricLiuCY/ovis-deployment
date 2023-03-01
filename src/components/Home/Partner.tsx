@@ -1,9 +1,10 @@
 import { PartnerOverview as Partner } from '@/../types';
-import styled from 'styled-components';
+import sanityClient from '@/utils/sanity/client';
+import { withAssetFileName } from '@/utils/sanity/index';
 import { useNextSanityImage } from 'next-sanity-image';
-import sanityClient from '@/utils/sanity/client'
-import { withAssetFileName } from '@/utils/sanity/index'
 import Image from 'next/image';
+import Link from 'next/link';
+import styled from 'styled-components';
 import vw from '../../styles/vw';
 
 interface PartnerProps {
@@ -78,12 +79,12 @@ function Partner({ partner }: PartnerProps) {
                     <p className="subcaption">{partner.founderTitle}</p>
                 </Nameblock>
             </HeadshotContainer>
-            {/* <h2>{partner.founderName}</h2>
-            <h2>{partner.founderTitle}</h2> */}
             <FoundarySummary>
                 {partner.founderSummary}
             </FoundarySummary>
-            <LearnMore className="cta">learn more</LearnMore>
+            <Link style={{ color: '#ffffff' }} href={`/about#${partner.name}`}>
+                <LearnMore className="cta">{partner.cta}</LearnMore>
+            </Link>
         </Root>
     )
 }

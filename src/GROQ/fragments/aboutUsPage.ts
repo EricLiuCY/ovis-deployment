@@ -3,7 +3,24 @@ import groq from 'groq'
 const aboutUsPageGroq = groq`
   *[_type == 'aboutUsPage'][0] {
     name,
-    'companyDescription': coalesce(companyDescription[$lang], companyDescription[$defaultLang], "Missing translation"),
+    'valueProp': valueProp{
+      'lines': lines[] {
+        'value': coalesce(value[$lang], value[$defaultLang], "Missing translation"),
+      },
+      ...,
+    },
+    'descriptionTitle': descriptionTitle{
+      'lines': lines[] {
+        'value': coalesce(value[$lang], value[$defaultLang], "Missing translation"),
+      },
+      ...,
+    },
+    'companyDescription': companyDescription{
+      'paragraphs': paragraphs[] {
+        'value': coalesce(value[$lang], value[$defaultLang], "Missing translation"),
+      },
+      ...,
+    },
     'partnerDetails': partnerDetails[]{
       'profilePicture': profilePicture{
         'alt': coalesce(alt[$lang], alt[$defaultLang], "Missing translation"),
@@ -11,14 +28,12 @@ const aboutUsPageGroq = groq`
       },
       'founderName': coalesce(founderName[$lang], founderName[$defaultLang], "Missing translation"),
       'founderTitle': coalesce(founderTitle[$lang], founderTitle[$defaultLang], "Missing translation"),
-      'founderSubtitle': coalesce(founderSubtitle[$lang], founderSubtitle[$defaultLang], "Missing translation"),
-      'founderDescription': coalesce(founderDescription[$lang], founderDescription[$defaultLang], "Missing translation"),
-      'additionalContents': additionalContents[]{
-        _type =='additionalContentBlock'=> {
-          'additionalDescription': coalesce(additionalDescription[$lang], additionalDescription[$defaultLang], "Missing translation"),
+      'content': content[]{
+        _type =='contentBlock'=> {
+          'value': coalesce(value[$lang], value[$defaultLang], "Missing translation"),
           ...,
         },
-        _type =='additionalContentImage'=> {
+        _type =='contentImage'=> {
           'alt': coalesce(alt[$lang], alt[$defaultLang], "Missing translation"),
           ...,
         },
