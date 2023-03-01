@@ -52,6 +52,13 @@ export interface AboutUsPage extends SanityDocument {
   name: string;
 
   /**
+   * Value Proposition — `string`
+   *
+   *
+   */
+  valueProp: string;
+
+  /**
    * Company Description — `string`
    *
    *
@@ -82,11 +89,11 @@ export interface Homepage extends SanityDocument {
   name: string;
 
   /**
-   * Value Proposition — `string`
+   * Value Proposition — `localeLines`
    *
    *
    */
-  valueProp: string;
+  valueProp: LocaleLines;
 
   /**
    * About Section — `aboutSection`
@@ -108,6 +115,50 @@ export interface Homepage extends SanityDocument {
    *
    */
   partnerOverviews: Array<SanityKeyed<PartnerOverview>>;
+}
+
+/**
+ * Jacklin Page
+ *
+ *
+ */
+export interface JacklinPage extends SanityDocument {
+  _type: "jacklinPage";
+
+  /**
+   * Name of document, DO NOT CHANGE — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Value Proposition — `string`
+   *
+   *
+   */
+  valueProp: string;
+
+  /**
+   * Background Image — `imageWithAlt`
+   *
+   *
+   */
+  backgroundImage: ImageWithAlt;
+
+  /**
+   * Jacklin Section 1 — `jacklinSection1`
+   *
+   *
+   */
+  jacklinSection1: JacklinSection1;
+
+  /**
+   * Jacklin Section 2 — `jacklinSection2`
+   *
+   *
+   */
+  jacklinSection2: JacklinSection2;
 }
 
 /**
@@ -188,129 +239,6 @@ export type AdditionalContentImage = {
   description: string;
 };
 
-
-export type CoreValue = {
-  _type: "coreValue";
-  /**
-   * Name — `string`
-   *
-   *
-   */
-  name: string;
-
-  /**
-   * Core Value — `string`
-   *
-   *
-   */
-  coreValue: string;
-
-  /**
-   * Description of your core value — `string`
-   *
-   *
-   */
-  description: string;
-};
-
-export type FeatureProject = {
-  _type: "featureProject";
-  /**
-   * Name — `string`
-   *
-   *
-   */
-  name: string;
-
-  /**
-   * Title — `string`
-   *
-   *
-   */
-  title: string;
-
-  /**
-   * Description — `string`
-   *
-   *
-   */
-  desc: string;
-
-  /**
-   * CTA — `string`
-   *
-   *
-   */
-  cta: string;
-
-  /**
-   * Project Images — `array`
-   *
-   *
-   */
-  projectImages: Array<SanityKeyed<ImageWithAlt>>;
-};
-
-export type ImageWithAlt = {
-  _type: "imageWithAlt";
-  /**
-   * Name — `string`
-   *
-   *
-   */
-  name: string;
-
-  /**
-   * Image — `image`
-   *
-   *
-   */
-  image: {
-    _type: "image";
-    asset: SanityReference<SanityImageAsset>;
-    crop?: SanityImageCrop;
-    hotspot?: SanityImageHotspot;
-  };
-
-  /**
-   * Alt Text — `string`
-   *
-   *
-   */
-  alt?: string;
-};
-
-export type AboutSection = {
-  _type: "aboutSection";
-  /**
-   * Name — `string`
-   *
-   *
-   */
-  name: string;
-
-  /**
-   * Core Values — `array`
-   *
-   *
-   */
-  coreValues: Array<SanityKeyed<CoreValue>>;
-
-  /**
-   * Mission Statement — `string`
-   *
-   *
-   */
-  missionStatement: string;
-
-  /**
-   * CTA — `string`
-   *
-   *
-   */
-  cta: string;
-};
-
 export type PartnerDetail = {
   _type: "partnerDetail";
   /**
@@ -342,13 +270,6 @@ export type PartnerDetail = {
   founderTitle: string;
 
   /**
-   * Founder Subtitle — `string`
-   *
-   *
-   */
-  founderSubtitle: string;
-
-  /**
    * Founder Description — `block`
    *
    *
@@ -363,6 +284,75 @@ export type PartnerDetail = {
   additionalContents?: Array<
     SanityKeyed<AdditionalContentBlock> | SanityKeyed<AdditionalContentImage>
   >;
+};
+
+export type FeatureProject = {
+  _type: "featureProject";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Title — `localeLines`
+   *
+   *
+   */
+  title: LocaleLines;
+
+  /**
+   * Description — `localeParagraphs`
+   *
+   *
+   */
+  desc: LocaleParagraphs;
+
+  /**
+   * CTA — `string`
+   *
+   *
+   */
+  cta: string;
+
+  /**
+   * Project Images — `array`
+   *
+   *
+   */
+  projectImages: Array<SanityKeyed<ImageWithAlt>>;
+};
+
+export type AboutSection = {
+  _type: "aboutSection";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Core Values — `localeLines`
+   *
+   *
+   */
+  coreValues: LocaleLines;
+
+  /**
+   * Mission Statement — `localeParagraphs`
+   *
+   *
+   */
+  missionStatement: LocaleParagraphs;
+
+  /**
+   * CTA — `string`
+   *
+   *
+   */
+  cta: string;
 };
 
 export type PartnerOverview = {
@@ -410,4 +400,180 @@ export type PartnerOverview = {
   cta: string;
 };
 
-export type Documents = AboutUsPage | Homepage | Theme;
+export type JacklinSection1 = {
+  _type: "jacklinSection1";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * Caption Line 1 — `string`
+   *
+   *
+   */
+  caption1: string;
+
+  /**
+   * Caption Line 2 — `string`
+   *
+   *
+   */
+  caption2: string;
+
+  /**
+   * Description — `string`
+   *
+   *
+   */
+  description: string;
+};
+
+export type JacklinSection2 = {
+  _type: "jacklinSection2";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Title — `string`
+   *
+   *
+   */
+  title: string;
+
+  /**
+   * Description — `string`
+   *
+   *
+   */
+  description: string;
+
+  /**
+   * Image Gallery — `array`
+   *
+   *
+   */
+  imageGallery: Array<SanityKeyed<ImageWithAlt>>;
+};
+
+export type LocaleLines = {
+  _type: "localeLines";
+  /**
+   * Lines — `array`
+   *
+   *
+   */
+  lines: Array<
+    SanityKeyed<{
+      _type: "line";
+      /**
+       * Name — `string`
+       *
+       *
+       */
+      name: string;
+
+      /**
+       * Value — `string`
+       *
+       *
+       */
+      value: string;
+    }>
+  >;
+};
+
+export type LocaleParagraphs = {
+  _type: "localeParagraphs";
+  /**
+   * Paragraphs — `array`
+   *
+   *
+   */
+  paragraphs: Array<
+    SanityKeyed<{
+      _type: "paragraph";
+      /**
+       * Name — `string`
+       *
+       *
+       */
+      name: string;
+
+      /**
+       * Value — `string`
+       *
+       *
+       */
+      value: string;
+    }>
+  >;
+};
+
+export type ImageWithAlt = {
+  _type: "imageWithAlt";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Image — `image`
+   *
+   *
+   */
+  image: {
+    _type: "image";
+    asset: SanityReference<SanityImageAsset>;
+    crop?: SanityImageCrop;
+    hotspot?: SanityImageHotspot;
+  };
+
+  /**
+   * Alt Text — `string`
+   *
+   *
+   */
+  alt?: string;
+};
+
+export type PdfFileLink = {
+  _type: "pdfFileLink";
+  /**
+   * Name — `string`
+   *
+   *
+   */
+  name: string;
+
+  /**
+   * Display Name — `string`
+   *
+   *
+   */
+  displayName: string;
+
+  /**
+   * PDF — `file`
+   *
+   *
+   */
+  pdf: { _type: "file"; asset: SanityReference<any> };
+};
+
+export type Documents = AboutUsPage | Homepage | JacklinPage | Theme;
