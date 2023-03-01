@@ -5,6 +5,7 @@ import sanityClient from '@/utils/sanity/client'
 import { withAssetFileName } from '@/utils/sanity/index'
 import Image from 'next/image';
 import vw from '../../styles/vw';
+import Link from 'next/link';
 
 interface PartnerProps {
     partner: Partner,
@@ -83,7 +84,9 @@ function Partner({ partner }: PartnerProps) {
             <FoundarySummary>
                 {partner.founderSummary}
             </FoundarySummary>
-            <LearnMore className="cta">learn more</LearnMore>
+            <Link style={{ color: '#ffffff' }} href="/">
+                <LearnMore className="cta">learn more</LearnMore>
+            </Link>
         </Root>
     )
 }

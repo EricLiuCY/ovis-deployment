@@ -2,6 +2,7 @@ import vw from '@/styles/vw';
 import styled from 'styled-components';
 
 import { PartnerOverview } from '../../../types';
+import LinesAndParagraphs from '../../GROQ/utils/LinesNParagraphs';
 import Partner from './Partner';
 
 
@@ -60,7 +61,7 @@ export default function PartnerOverviews({ partnerOverviews }: PartnerOverviewsP
     <StyledPartnerOverview>
         <Overlay />
         <MeetTheTeam className='h2_large'>
-            Meet the team
+            Meet The Team
         </MeetTheTeam>
         <PartnerSection>
         {
