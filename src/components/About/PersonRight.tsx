@@ -16,7 +16,7 @@ const StyledPersonRight = styled.section`
     ${vw([
         ['padding-top', 90, 60, 40],
         ['padding-bottom', 90, 120, 80],
-        ['flex-direction', 'row', 'column', 'column'],
+        ['flex-direction', 'row', 'column-reverse', 'column-reverse'],
         ['padding-left', 0, 60, 20],
         ['padding-right', 120, 60, 20],
         ['min-height', 900, 'unset', 'unset'],
