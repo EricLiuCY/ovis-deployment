@@ -12,7 +12,7 @@ const StyledButton = styled.button`
     cursor: pointer;
     ${vw([
         ['width', 300, 324, '100%'],
-        ['height', 80, 60, 60],
+        ['height', 80, 60, 40],
         ['padding-left', 50, 30, 0],
         ['justify-content', 'flex-start', 'flex-start', 'center']
     ])}
