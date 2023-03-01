@@ -73,7 +73,7 @@ const GlobalStyle = createGlobalStyle`
     p {
         line-height: 1.35;
         ${vw([
-            ['font-size', 16, 14, 14],
+            ['font-size', 16, 14, 12],
         ])}
     }
 
@@ -100,12 +100,12 @@ const GlobalStyle = createGlobalStyle`
         text-transform: uppercase;
         font-weight: 700;
         ${vw([
-            ['font-size', 28, 24, 24],
+            ['font-size', 28, 24, 16],
         ])}
     }
     .subcaption {
         ${vw([
-            ['font-size', 20, 18, 18],
+            ['font-size', 20, 18, 12],
         ])}
     }
 `;
