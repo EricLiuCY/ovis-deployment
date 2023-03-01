@@ -1,11 +1,11 @@
 import { PartnerOverview as Partner } from '@/../types';
-import styled from 'styled-components';
+import sanityClient from '@/utils/sanity/client';
+import { withAssetFileName } from '@/utils/sanity/index';
 import { useNextSanityImage } from 'next-sanity-image';
-import sanityClient from '@/utils/sanity/client'
-import { withAssetFileName } from '@/utils/sanity/index'
 import Image from 'next/image';
-import vw from '../../styles/vw';
 import Link from 'next/link';
+import styled from 'styled-components';
+import vw from '../../styles/vw';
 
 interface PartnerProps {
     partner: Partner,
@@ -85,7 +85,7 @@ function Partner({ partner }: PartnerProps) {
                 {partner.founderSummary}
             </FoundarySummary>
             <Link style={{ color: '#ffffff' }} href="/">
-                <LearnMore className="cta">learn more</LearnMore>
+                <LearnMore className="cta">{partner.cta}</LearnMore>
             </Link>
         </Root>
     )

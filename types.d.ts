@@ -549,7 +549,7 @@ export type ImageWithAlt = {
    *
    *
    */
-  alt?: string;
+  alt: string;
 };
 
 export type PdfFileLink = {

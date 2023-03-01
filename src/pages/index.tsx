@@ -42,7 +42,7 @@ export default function Home({ homepage, theme }: HomepageProps) {
       {/* Page Structure */}
       <Hero valueProp={homepage.valueProp}/>
       <About aboutSection={homepage.aboutSection}/>
-      <Jacklin />
+      <Jacklin featureProject={homepage.featureProject}/>
       <PartnerOverview
         partnerOverviews={homepage.partnerOverviews}
       />
@@ -51,8 +51,6 @@ export default function Home({ homepage, theme }: HomepageProps) {
 }
 
 export const getServerSideProps : GetServerSideProps<HomepageProps> = async (ctx: GetServerSidePropsContext) => {
-  const context = ctx.locale;
-  console.log(context)
   const homepage = await fetchHomePage('en');
   const theme = await fetchTheme('en');
   return {

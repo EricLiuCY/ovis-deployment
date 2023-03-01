@@ -32,7 +32,7 @@ const HomepageGROQ = groq`
         ...,
       },
       'desc': desc{
-        'paragraphs': lines[] {
+        'paragraphs': paragraphs[] {
           'value': coalesce(value[$lang], value[$defaultLang], "Missing translation"),
         },
         ...,
