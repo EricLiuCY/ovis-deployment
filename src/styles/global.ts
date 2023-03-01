@@ -85,6 +85,29 @@ const GlobalStyle = createGlobalStyle`
             ['font-size', 16, 14, 14],
         ])}
     }
+
+    .cta {
+        cursor: pointer;
+        font-weight: 700;
+        text-transform: uppercase;
+        text-decoration: underline;
+        ${vw([
+            ['font-size', 16, 14, 14],
+        ])}
+    }
+
+    .caption {
+        text-transform: uppercase;
+        font-weight: 700;
+        ${vw([
+            ['font-size', 28, 24, 24],
+        ])}
+    }
+    .subcaption {
+        ${vw([
+            ['font-size', 20, 18, 18],
+        ])}
+    }
 `;
 
 export default GlobalStyle;

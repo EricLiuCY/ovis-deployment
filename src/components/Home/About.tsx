@@ -15,10 +15,10 @@ const StyledAbout = styled.section`
     /* height: 100vh; */
     position: relative;
     color: white;
-
     ${vw([
         ['padding-top', 90, 60, 40],
         ['padding-bottom', 90, 120, 80],
+
         ['padding-left', 120, 60, 20],
         ['padding-right', 120, 60, 20],
         ['min-height', 900, 'unset', 'unset'],
@@ -37,22 +37,6 @@ const Overlay = styled.div`
     top: 0;
     left: 0;
 `
-
-const Watermark = styled(Parallax)`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-`
-
-const StyledLogo = styled(Logo)`
-    opacity: 0.1;
-    transform: translate(-50%, -50%);
-    ${vw([
-        ['display', 'block', 'none', 'none'],
-        ['width', 600, 0, 0],
-        ['height', 228, 0, 0],
-    ])}
-`;
 
 const CoreValues = styled.h2`
     ${vw([
@@ -79,9 +63,7 @@ export default function About({ aboutSection }: AboutProps) {
   return (
     <StyledAbout>
         <Overlay />
-        {/* <Watermark translateX={[-25, 25]}>
-            <StyledLogo />
-        </Watermark> */}
+
         <CoreValues className="h2_large">
             {aboutSection.coreValues.map((value, index) => (
                 <div key={index}> {value.coreValue} </div>

@@ -9,9 +9,10 @@ export interface PartnerOverviewsProps {
     partnerOverviews: PartnerOverview[]
 }
 
-const StyledAbout = styled.section`
+const StyledPartnerOverview = styled.section`
     width: 100%;
-    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
     position: relative;
     color: white;
 
@@ -20,9 +21,9 @@ const StyledAbout = styled.section`
         ['padding-bottom', 90, 120, 80],
         ['padding-left', 120, 60, 20],
         ['padding-right', 120, 60, 20],
-        ['min-height', 900, 'unset', 'unset'],
-        ['max-height', 1200, 'unset', 'unset'],
-        ['height', '100vh', 'auto', 'auto']
+        // ['min-height', 900, 'unset', 'unset'],
+        // ['max-height', 1200, 'unset', 'unset'],
+        // ['height', '100vh', 'auto', 'auto']
     ])}
 `
 
@@ -37,15 +38,36 @@ const Overlay = styled.div`
     left: 0;
 `
 
+const MeetTheTeam = styled.h2`
+    ${vw([
+        ['margin-bottom', 90, 60, 20]
+    ])}
+`
+
+const PartnerSection = styled.div`
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    ${vw([
+        ['flex-direction', 'row', 'column', 'column'],
+        ['gap','unset', 60, 40]
+    ])}
+`
 
 export default function PartnerOverviews({ partnerOverviews }: PartnerOverviewsProps) {
   return (
-    <StyledAbout>
+    <StyledPartnerOverview>
         <Overlay />
+        <MeetTheTeam className='h2_large'>
+            Meet the team
+        </MeetTheTeam>
+        <PartnerSection>
         {
             partnerOverviews.map((partnerOverview, index) => <Partner key={index} partner={partnerOverview}/>)
         }
-    </StyledAbout>
+        </PartnerSection>
+    </StyledPartnerOverview>
   )
 }
 
