@@ -20,7 +20,7 @@ const Root = styled.div`
 const HeadshotContainer = styled.div`
     position: relative;
     ${vw([
-        ['height', 350, 350, 150],
+        ['height', 350, 350, 200],
         ['width', 480, '100%', '100%']
     ])}
 `

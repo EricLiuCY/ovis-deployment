@@ -100,12 +100,12 @@ const GlobalStyle = createGlobalStyle`
         text-transform: uppercase;
         font-weight: 700;
         ${vw([
-            ['font-size', 28, 24, 24],
+            ['font-size', 28, 24, 16],
         ])}
     }
     .subcaption {
         ${vw([
-            ['font-size', 20, 18, 18],
+            ['font-size', 20, 18, 12],
         ])}
     }
 `;
