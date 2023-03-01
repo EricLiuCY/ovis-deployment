@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import vw from './vw';
 import theme from './theme';
+import config from '../utils/config';
 
 const GlobalStyle = createGlobalStyle`
     * {
@@ -107,6 +108,12 @@ const GlobalStyle = createGlobalStyle`
         ${vw([
             ['font-size', 20, 18, 12],
         ])}
+    }
+
+    .parallax {
+        @media screen and (max-width: ${`${config.mediaQuery.desktop}px`}) {
+            transform: none !important;
+        }
     }
 `;
 

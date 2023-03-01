@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Parallax } from 'react-scroll-parallax'
 import Image from 'next/image'
 import vw, { vwDesktop } from '@/styles/vw';
 import Button from '../Button';
@@ -77,10 +78,18 @@ export default function Jacklin() {
             Residences
         </JacklinResidences>
         <ImageWrapper>
-          <StyledImage src={'/NCCA220049_3.jpg'} width={1920} height={1080} alt="Jacklin 1" />
-          <StyledImage src={'/NCCA220049_4.jpg'} width={1920} height={1080} alt="Jacklin 1" />
+          <Parallax className="parallax" translateY={[-5, 0]} shouldAlwaysCompleteAnimation>
+            <StyledImage src={'/NCCA220049_3.jpg'} width={1920} height={1080} alt="Jacklin 1" />
+          </Parallax>
+          <Parallax className="parallax" translateY={[-10, 0]} shouldAlwaysCompleteAnimation>
+            <StyledImage src={'/NCCA220049_4.jpg'} width={1920} height={1080} alt="Jacklin 1" />
+          </Parallax>
+          <Parallax className="parallax" translateY={[-15, 0]} shouldAlwaysCompleteAnimation>
           <StyledImage src={'/NCCA220049_5.jpg'} width={1920} height={1080} alt="Jacklin 1" />
+          </Parallax>
+          <Parallax className="parallax" translateY={[-20, 0]} shouldAlwaysCompleteAnimation>
           <StyledImage src={'/NCCA220049_6.jpg'} width={1920} height={1080} alt="Jacklin 1" />
+          </Parallax>
         </ImageWrapper>
         <Description>
             <_p>
