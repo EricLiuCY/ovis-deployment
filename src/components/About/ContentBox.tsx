@@ -1,5 +1,5 @@
 import { createRef, useRef, useState } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import ArrowRight from '@/assets/About/ArrowRight';
 import vw from '@/styles/vw';
 
@@ -80,15 +80,32 @@ const CustomComponent2: React.FC = () => {
     )
 }
 
-const Root = styled.div`
+interface ContentBoxProps {
+    right: boolean;
+}
+
+const Root = styled.div<ContentBoxProps>`
     position: relative;
     height: 100%;
     display: flex;
     flex-direction: column;
     ${vw([
         ['width', 880, '100%', '100%'],
-        ['padding-right', 120, 0, 0],
+        // ['padding-right', 120, 0, 0],
     ])}
+    ${props => props.right ?
+        css`
+            ${vw([
+                ['padding-right', 120, 0, 0],
+            ])}
+        `
+        :
+        css`
+            ${vw([
+                ['padding-left', 120, 0, 0],
+            ])}
+        `
+    }
 `
 
 const ContentWrapper = styled.div`
@@ -117,6 +134,7 @@ const UserContent = styled.div<UserContentProps>`
 
     ${vw([
         ['width', 760, '100%', '100%'],
+        ['padding-right', 5, 5, 5]
     ])}
 
     &::-webkit-scrollbar {
@@ -168,8 +186,7 @@ const Arrow = styled(ArrowRight)`
         ['height', 20, 20, 10],
     ])}
 `
-
-export default function ContentBox() {
+export default function ContentBox(props: ContentBoxProps) {
     const componentList = [
         {
             name: 'Biography',
@@ -191,7 +208,7 @@ export default function ContentBox() {
     }
 
     return (
-        <Root>
+        <Root {...props}>
             <ContentWrapper>
                 {componentList.map((component, idx) => {
                     return (
@@ -212,4 +229,8 @@ export default function ContentBox() {
             </Controls>
         </Root>
     )
+}
+
+ContentBox.defaultProps = {
+    right: true,
 }

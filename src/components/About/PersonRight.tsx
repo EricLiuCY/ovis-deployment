@@ -1,17 +1,9 @@
 import vw from '@/styles/vw';
-import { Parallax } from 'react-scroll-parallax';
 import styled from 'styled-components';
-import Button from '../Button';
 
-import Logo from '@/assets/Logo';
-import config from '../../utils/config';
 import ContentBox from './ContentBox';
 
-export interface CompanyProps {
-    
-}
-
-const StyledPersonLeft = styled.section`
+const StyledPersonRight = styled.section`
     width: 100%;
     position: relative;
     color: white;
@@ -20,10 +12,9 @@ const StyledPersonLeft = styled.section`
     ${vw([
         ['padding-top', 90, 40, 30],
         ['padding-bottom', 90, 40, 30],
-        ['flex-direction', 'row', 'column', 'column'],
-        // ['justify-content', ]
-        ['padding-left', 120, 60, 20],
-        ['padding-right', 0, 60, 20],
+        ['flex-direction', 'row', 'column-reverse', 'column-reverse'],
+        ['padding-left', 0, 60, 20],
+        ['padding-right', 120, 60, 20],
         ['min-height', 900, 'unset', 'unset'],
         ['max-height', 1200, 'unset', 'unset'],
         ['height', '100vh', 'auto', 'auto']
@@ -61,17 +52,17 @@ const Nameblock = styled.div`
     /* position: absolute;
     bottom: 0;
     left: 0; */
-    background: linear-gradient(90deg, #EDC978 0%, rgba(237, 201, 120, 0) 100%);
+    background: linear-gradient(90deg, rgba(237, 201, 120, 0) 0%, #EDC978 100%);
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: flex-end;
+    align-items: flex-start;
 
     ${vw([
         ['display', 'flex', 'none', 'none'],
         ['height', 80, 0, 0],
-        ['padding-right', 120, 0, 0],
+        ['padding-left', 120, 0, 0],
         ['width', 880, 0, 0],
         ['margin-bottom', 40, 0, 0]
     ])}
@@ -102,10 +93,17 @@ const Content = styled.div`
   flex-direction: column;
 `
 
-export default function PersonLeft() {
+export default function PersonRight() {
   return (
-    <StyledPersonLeft>
+    <StyledPersonRight>
         <Overlay />
+        <Content>
+          <Nameblock>
+            <Name className="caption">Sebastien Loboeuf</Name>
+            <Title className="subcaption">General Manager</Title>
+          </Nameblock>
+          <ContentBox right={false}/>
+        </Content>
         <HeadshotContainer>
           <Headshot
             src="https://cdn.sanity.io/images/byi6f4gi/production/4ac5ea9a116be6dcbe46c2c401e1705e9ad301de-438x425.jpg?q=75&fit=clip&auto=format&w=640"
@@ -115,15 +113,7 @@ export default function PersonLeft() {
             <Title className="subcaption">General Manager</Title>
           </MinNameblock>
         </HeadshotContainer>
-        <Content>
-          <Nameblock>
-            <Name className="caption">Sebastien Loboeuf</Name>
-            <Title className="subcaption">General Manager</Title>
-          </Nameblock>
-          <ContentBox />
-        </Content>
-        
-    </StyledPersonLeft>
+    </StyledPersonRight>
   )
 }
 
