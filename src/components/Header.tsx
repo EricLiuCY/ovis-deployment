@@ -34,9 +34,10 @@ const StyledHeader = styled.header<HeaderProps>`
         ['padding-left', 120, 60, 20],
         ['padding-right', 170 + 20, 100 + 20, 50 + 10],
         ['height',
-            props.scrolledPast ? 90 : 195,
-            props.scrolledPast ? 80 : 140,
-            props.scrolledPast ? 70 : 130
+            // props.scrolledPast ? 90 : 195,
+            // props.scrolledPast ? 80 : 140,
+            // props.scrolledPast ? 70 : 130
+            120, 100, 90
         ]
     ])}
 `
@@ -50,9 +51,10 @@ const StyledLogo = styled(Logo)<HeaderProps>`
     transform: translate(-50%, -50%);
     ${(props) => vw([
         ['height',
-            props.scrolledPast ? 50 : 75,
-            props.scrolledPast ? 40 : 60,
-            props.scrolledPast ? 30 : 50
+            // props.scrolledPast ? 50 : 75,
+            // props.scrolledPast ? 40 : 60,
+            // props.scrolledPast ? 30 : 50
+            60, 50, 40
         ],
     ])}
 `

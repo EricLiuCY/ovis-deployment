@@ -66,7 +66,7 @@ const GlobalStyle = createGlobalStyle`
         letter-spacing: 0.25em;
         text-transform: uppercase;
         ${vw([
-            ['font-size', 20, 16, 16],
+            ['font-size', 20, 16, 13],
         ])}
     }
 
