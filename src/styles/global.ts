@@ -73,7 +73,7 @@ const GlobalStyle = createGlobalStyle`
     p {
         line-height: 1.35;
         ${vw([
-            ['font-size', 16, 14, 14],
+            ['font-size', 16, 14, 12],
         ])}
     }
 

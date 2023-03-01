@@ -33,7 +33,7 @@ const Headshot = styled(Image)`
     filter: brightness(0.75);
 `
 
-const NameBlock = styled.div`
+const Nameblock = styled.div`
     width: 100%;
     position: absolute;
     bottom: 0;
@@ -74,10 +74,10 @@ function Partner({ partner }: PartnerProps) {
             <HeadshotContainer>
                 {/*// @ts-ignore */}
                 <Headshot {...imageProps} loader={withAssetFileName} alt={partner.profilePicture}/>
-                <NameBlock>
+                <Nameblock>
                     <p className="caption">{partner.founderName}</p>
                     <p className="subcaption">{partner.founderTitle}</p>
-                </NameBlock>
+                </Nameblock>
             </HeadshotContainer>
             {/* <h2>{partner.founderName}</h2>
             <h2>{partner.founderTitle}</h2> */}
