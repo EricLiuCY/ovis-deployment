@@ -5,6 +5,7 @@ import Button from '../Button';
 
 import Logo from '@/assets/Logo';
 import { AboutSection } from '../../../types';
+import LinesAndParagraphs from '../../GROQ/utils/LinesNParagraphs';
 
 export interface AboutProps {
     aboutSection: AboutSection
@@ -65,13 +66,11 @@ export default function About({ aboutSection }: AboutProps) {
         <Overlay />
 
         <CoreValues className="h2_large">
-            {aboutSection.coreValues.map((value, index) => (
-                <div key={index}> {value.coreValue} </div>
-            ))}
+            <LinesAndParagraphs value={aboutSection.coreValues.lines}/>
         </CoreValues>
         <MissionStatement>
             <_p>
-                {aboutSection.missionStatement}
+                <LinesAndParagraphs value={aboutSection.missionStatement.paragraphs}/>
             </_p>
             <Button text={aboutSection.cta} />
         </MissionStatement>

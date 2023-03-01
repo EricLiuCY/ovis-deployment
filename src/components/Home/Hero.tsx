@@ -1,8 +1,10 @@
 import styled from 'styled-components'
 import vw from '@/styles/vw';
+import { LocaleLines } from '../../../types';
+import LinesAndParagraphs from '../../GROQ/utils/LinesNParagraphs';
 
 export interface HeroProps {
-    valueProp: string
+    valueProp: LocaleLines
 }
 
 const StyledHero = styled.section`
@@ -45,10 +47,9 @@ export default function Hero({ valueProp} : HeroProps) {
   return (
     <StyledHero>
         <Transition />
-        <Strapline className='strapline'>
-            {valueProp}
-        </Strapline>
+            <Strapline className='straStraplineline'>
+                <LinesAndParagraphs value={valueProp.lines} concact={true}/>
+            </Strapline>
     </StyledHero>
   )
 }
-

@@ -68,7 +68,6 @@ const LearnMore = styled.a`
 function Partner({ partner }: PartnerProps) {
     // @ts-ignore
     const imageProps = useNextSanityImage(sanityClient, partner.profilePicture.image)
-    console.log('asdasd', imageProps)
     return (
         <Root>
             <HeadshotContainer>
