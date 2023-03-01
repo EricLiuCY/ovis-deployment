@@ -1,17 +1,9 @@
 import vw from '@/styles/vw';
-import sanityClient from '@/utils/sanity/client';
-import Image from 'next/image';
-import { Parallax } from 'react-scroll-parallax';
 import styled from 'styled-components';
 
-import Logo from '@/assets/Logo';
-import { withAssetFileName } from '@/utils/sanity/index';
-import { useNextSanityImage } from 'next-sanity-image';
 import { PartnerOverview } from '../../../types';
+import Partner from './Partner';
 
-interface PartnerOverviewProps {
-    partnerOverview: PartnerOverview,
-}
 
 export interface PartnerOverviewsProps {
     partnerOverviews: PartnerOverview[]
@@ -45,63 +37,13 @@ const Overlay = styled.div`
     left: 0;
 `
 
-const Watermark = styled(Parallax)`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-`
-
-const StyledLogo = styled(Logo)`
-    opacity: 0.1;
-    transform: translate(-50%, -50%);
-    ${vw([
-        ['display', 'block', 'none', 'none'],
-        ['width', 600, 0, 0],
-        ['height', 228, 0, 0],
-    ])}
-`;
-
-const CoreValues = styled.h2`
-    ${vw([
-        ['margin-bottom', 0, 90, 60]
-    ])}
-`
-
-const MissionStatement = styled.div`
-    ${vw([
-        ['position', 'absolute', 'relative', 'relative'],
-        ['width', 606, '100%', '100%'],
-        ['right', 120, 'unset', 'unset'],
-        ['bottom', 90, 'unset', 'unset']
-    ])}
-`;
-
-const _p = styled.p`
-    ${vw([
-        ['margin-bottom', 60, 60, 30]
-    ])} 
-`
-
-function PartnerOverview({ partnerOverview }: PartnerOverviewProps) {
-    // @ts-ignore
-    const imageProps = useNextSanityImage(sanityClient, partnerOverview.profilePicture.image)
-    console.log('asdasd', imageProps)
-    return (
-        <div>
-            {/*// @ts-ignore */}
-            <Image {...imageProps} loader={withAssetFileName} height={100} width={50} alt={partnerOverview.profilePicture}/>
-            <h2>{partnerOverview.founderName}</h2>
-            <h2>{partnerOverview.founderTitle}</h2>
-            <h2>{partnerOverview.founderSummary}</h2>
-        </div>
-    )
-}
 
 export default function PartnerOverviews({ partnerOverviews }: PartnerOverviewsProps) {
   return (
     <StyledAbout>
+        <Overlay />
         {
-            partnerOverviews.map((partnerOverview, index) => <PartnerOverview key={index} partnerOverview={partnerOverview}/>)
+            partnerOverviews.map((partnerOverview, index) => <Partner key={index} partner={partnerOverview}/>)
         }
     </StyledAbout>
   )
