@@ -6,6 +6,7 @@ import { AboutUsPage, Theme } from '../../../types'
 import Company from '../../components/About/Company'
 import Hero from '../../components/About/Hero'
 import PersonLeft from '../../components/About/PersonLeft'
+import PersonRight from '../../components/About/PersonRight'
 import fetchAboutUsPage from '../../GROQ/quries/fetchAboutUsPage'
 import fetchTheme from '../../GROQ/quries/fetchTheme'
 import client from '../../utils/sanity/client'
@@ -53,6 +54,8 @@ export default function About({ aboutUsPage, theme }: AboutUsPageProps) {
       </Video>
       <Hero valueProp={"Redefining Modern Western Coast Living Through Ethical Development Practices"}/>
       <Company />
+      <PersonLeft />
+      <PersonRight />
       <PersonLeft />
     </Root>
   )
