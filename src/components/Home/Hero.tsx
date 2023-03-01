@@ -29,14 +29,14 @@ const Transition = styled.div`
     ])}
 `
 
-const Strapline = styled.h1`
+const Strapline = styled.h2`
     text-align: center;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     color: white;
     ${vw([
-        ['width', 1000, '100%', '100%'],
+        ['width', 1200, '100%', '100%'],
         ['bottom', 60, 40, '15vh'],
         ['padding-left', 120, 60, 20],
         ['padding-right', 120, 60, 20],
@@ -48,7 +48,7 @@ export default function Hero({ valueProp} : HeroProps) {
     <StyledHero>
         <Transition />
             <Strapline className='Strapline'>
-                <LinesAndParagraphs value={valueProp.lines} concact={true}/>
+                <LinesAndParagraphs value={valueProp.lines}/>
             </Strapline>
     </StyledHero>
   )

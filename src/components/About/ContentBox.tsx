@@ -2,85 +2,10 @@ import { createRef, useRef, useState } from 'react';
 import styled, { css } from 'styled-components';
 import ArrowRight from '@/assets/About/ArrowRight';
 import vw from '@/styles/vw';
-
-const CustomComponent1: React.FC = () => {
-    return (
-        <p>
-            At OVIS Group, we are dedicated to creating sustainable homes that minimize our 
-            environmental impact while providing comfortable and energy-efficient living spaces for 
-            our residents. We believe that our commitment to sustainability not only benefits the 
-            environment but also enhances the quality of life for our residents.
-            <br />
-            <br />
-            Our focus on innovation allows us to stay ahead of the curve in terms of design trends 
-            and technological advances. We are constantly exploring new ways to improve the resident 
-            experience, from incorporating smart home technology and high-quality materials.
-            <br /><br />
-            Above all, OVIS Group is committed to providing exceptional service to our residents. We 
-            believe that a rental building is more than just a place to live - it&apos;s a community, 
-            something you should be proud to call your home, and we work hard to foster a sense of 
-            belonging and connection among our residents. From our concierge service to our smart 
-            technology, we are dedicated to making our properties feel like home.
-            At OVIS Group, we are dedicated to creating sustainable homes that minimize our 
-            environmental impact while providing comfortable and energy-efficient living spaces for 
-            our residents. We believe that our commitment to sustainability not only benefits the 
-            environment but also enhances the quality of life for our residents.
-            <br />
-            <br />
-            Our focus on innovation allows us to stay ahead of the curve in terms of design trends 
-            and technological advances. We are constantly exploring new ways to improve the resident 
-            experience, from incorporating smart home technology and high-quality materials.
-            <br /><br />
-            Above all, OVIS Group is committed to providing exceptional service to our residents. We 
-            believe that a rental building is more than just a place to live - it&apos;s a community, 
-            something you should be proud to call your home, and we work hard to foster a sense of 
-            belonging and connection among our residents. From our concierge service to our smart 
-            technology, we are dedicated to making our properties feel like home.
-            At OVIS Group, we are dedicated to creating sustainable homes that minimize our 
-            environmental impact while providing comfortable and energy-efficient living spaces for 
-            our residents. We believe that our commitment to sustainability not only benefits the 
-            environment but also enhances the quality of life for our residents.
-            <br />
-            <br />
-            Our focus on innovation allows us to stay ahead of the curve in terms of design trends 
-            and technological advances. We are constantly exploring new ways to improve the resident 
-            experience, from incorporating smart home technology and high-quality materials.
-            <br /><br />
-            Above all, OVIS Group is committed to providing exceptional service to our residents. We 
-            believe that a rental building is more than just a place to live - it&apos;s a community, 
-            something you should be proud to call your home, and we work hard to foster a sense of 
-            belonging and connection among our residents. From our concierge service to our smart 
-            technology, we are dedicated to making our properties feel like home.
-            At OVIS Group, we are dedicated to creating sustainable homes that minimize our 
-            environmental impact while providing comfortable and energy-efficient living spaces for 
-            our residents. We believe that our commitment to sustainability not only benefits the 
-            environment but also enhances the quality of life for our residents.
-            <br />
-            <br />
-            Our focus on innovation allows us to stay ahead of the curve in terms of design trends 
-            and technological advances. We are constantly exploring new ways to improve the resident 
-            experience, from incorporating smart home technology and high-quality materials.
-            <br /><br />
-            Above all, OVIS Group is committed to providing exceptional service to our residents. We 
-            believe that a rental building is more than just a place to live - it&apos;s a community, 
-            something you should be proud to call your home, and we work hard to foster a sense of 
-            belonging and connection among our residents. From our concierge service to our smart 
-            technology, we are dedicated to making our properties feel like home.
-        </p>
-    )
-}
-
-const CustomComponent2: React.FC = () => {
-    return (
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl ut
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl ut
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl ut
-        </p>
-    )
-}
+import { PortableText } from '@portabletext/react';
 
 interface ContentBoxProps {
+    content: { name: string, value: any}[],
     right: boolean;
 }
 
@@ -167,9 +92,15 @@ const LeftButton = styled.button`
     outline: none;
     background: none;
     cursor: pointer;
+
+    &:disabled {
+        opacity: 0.2;
+    }
 `
 
-const ContentTitle = styled.p``
+const ContentTitle = styled.p`
+    justify-content: center;
+`
 
 const NextButton = styled.button`
     display: flex;
@@ -179,6 +110,10 @@ const NextButton = styled.button`
     outline: none;
     background: none;
     cursor: pointer;
+
+    &:disabled {
+        opacity: 0.2;
+    }
 `
 const Arrow = styled(ArrowRight)`
     ${vw([
@@ -186,44 +121,35 @@ const Arrow = styled(ArrowRight)`
         ['height', 20, 20, 10],
     ])}
 `
-export default function ContentBox(props: ContentBoxProps) {
-    const componentList = [
-        {
-            name: 'Biography',
-            component: CustomComponent1,
-        },
-        {
-            name: 'Genevee',
-            component: CustomComponent2,
-        }
-    ];
+export default function ContentBox(props : ContentBoxProps) {
+    const contentList = props.content
 
     const [componentIdx, setComponentIdx] = useState(0);
 
     const nextComponent = () => {
-        setComponentIdx(Math.abs(componentIdx + 1) % componentList.length);
+        setComponentIdx(Math.abs(componentIdx + 1) % contentList.length);
     }
     const prevComponent = () => {
-        setComponentIdx(Math.abs(componentIdx - 1) % componentList.length);
+        setComponentIdx(Math.abs(componentIdx - 1) % contentList.length);
     }
 
     return (
         <Root {...props}>
             <ContentWrapper>
-                {componentList.map((component, idx) => {
+                {contentList.map((contentObj, idx) => {
                     return (
                         <UserContent active={idx === componentIdx} key={idx}>
-                            <component.component />
+                            <PortableText value={contentObj.value}/>
                         </UserContent>
                     )
                 })}
             </ContentWrapper>
             <Controls>
-                <LeftButton onClick={prevComponent}>
+                <LeftButton onClick={prevComponent} disabled={contentList.length <= 1}>
                     <Arrow />
                 </LeftButton>
-                <ContentTitle className='strapline'>{componentList[componentIdx].name}</ContentTitle>
-                <NextButton onClick={nextComponent}>
+                <ContentTitle className='strapline'>{contentList[componentIdx].name}</ContentTitle>
+                <NextButton onClick={nextComponent} disabled={contentList.length <= 1}>
                     <Arrow />
                 </NextButton>
             </Controls>

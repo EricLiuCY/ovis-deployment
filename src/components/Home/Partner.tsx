@@ -79,12 +79,10 @@ function Partner({ partner }: PartnerProps) {
                     <p className="subcaption">{partner.founderTitle}</p>
                 </Nameblock>
             </HeadshotContainer>
-            {/* <h2>{partner.founderName}</h2>
-            <h2>{partner.founderTitle}</h2> */}
             <FoundarySummary>
                 {partner.founderSummary}
             </FoundarySummary>
-            <Link style={{ color: '#ffffff' }} href="/">
+            <Link style={{ color: '#ffffff' }} href={`/about#${partner.name}`}>
                 <LearnMore className="cta">{partner.cta}</LearnMore>
             </Link>
         </Root>
