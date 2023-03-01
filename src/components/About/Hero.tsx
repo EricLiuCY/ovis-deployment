@@ -47,7 +47,7 @@ export default function Hero({ valueProp} : HeroProps) {
   return (
     <StyledHero>
         <Transition />
-        <Strapline className='Strapline'>
+        <Strapline className='strapline'>
             <LinesAndParagraphs value={valueProp.lines}/>
         </Strapline>
     </StyledHero>
