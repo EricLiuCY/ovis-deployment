@@ -18,8 +18,8 @@ const StyledPersonLeft = styled.section`
     display: flex;
     justify-content: space-between;
     ${vw([
-        ['padding-top', 90, 60, 40],
-        ['padding-bottom', 90, 120, 80],
+        ['padding-top', 90, 40, 30],
+        ['padding-bottom', 90, 40, 30],
         ['flex-direction', 'row', 'column', 'column'],
         // ['justify-content', ]
         ['padding-left', 120, 60, 20],
