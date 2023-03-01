@@ -1,4 +1,4 @@
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import styled from 'styled-components'
 import { Homepage, Theme } from '../../types'
 import About from '../components/Home/About'
@@ -42,7 +42,7 @@ export default function Home({ homepage, theme }: HomepageProps) {
       {/* Page Structure */}
       <Hero valueProp={homepage.valueProp}/>
       <About aboutSection={homepage.aboutSection}/>
-      <Jacklin />
+      <Jacklin featureProject={homepage.featureProject}/>
       <PartnerOverview
         partnerOverviews={homepage.partnerOverviews}
       />
@@ -50,7 +50,7 @@ export default function Home({ homepage, theme }: HomepageProps) {
   )
 }
 
-export const getServerSideProps : GetServerSideProps<HomepageProps> = async () => {
+export const getServerSideProps : GetServerSideProps<HomepageProps> = async (ctx: GetServerSidePropsContext) => {
   const homepage = await fetchHomePage('en');
   const theme = await fetchTheme('en');
   return {

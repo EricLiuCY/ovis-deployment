@@ -5,9 +5,12 @@ import Button from '../Button';
 
 import Logo from '@/assets/Logo';
 import config from '../../utils/config';
+import { LocaleLines, LocaleParagraphs } from '../../../types';
+import LinesAndParagraphs from '../../GROQ/utils/LinesNParagraphs';
 
 export interface CompanyProps {
-    
+    descriptionTitle: LocaleLines,
+    companyDescription: LocaleParagraphs
 }
 
 const StyledCompany = styled.section`
@@ -80,37 +83,19 @@ const _p = styled.p`
     ])} 
 `
 
-export default function Company() {
+export default function Company({ descriptionTitle, companyDescription}: CompanyProps) {
   return (
     <StyledCompany>
         <Overlay />
         <Title className="h2_large">
-            Building<br />
-            our purpose
+            <LinesAndParagraphs value={descriptionTitle.lines}/>
         </Title>
         <Watermark translateX={[0, 65]} shouldAlwaysCompleteAnimation>
             <WatermarkImg />
         </Watermark>
         <MissionStatement>
             <_p>
-                At OVIS Group, we are dedicated to creating sustainable homes that minimize our 
-                environmental impact while providing comfortable and energy-efficient living spaces 
-                for our residents. We believe that our commitment to sustainability not only benefits 
-                the environment but also enhances the quality of life for our residents.
-                <br />
-                <br />
-                Our focus on innovation allows us to stay ahead of the curve in terms of design 
-                trends and technological advances. We are constantly exploring new ways to improve 
-                the resident experience, from incorporating smart home technology and high-quality 
-                materials.
-                <br />
-                <br />
-                Above all, OVIS Group is committed to providing exceptional service to our residents. 
-                We believe that a rental building is more than just a place to live - it&apos;s a 
-                community, something you should be proud to call your home, and we work hard to 
-                foster a sense of belonging and connection among our residents. From our concierge 
-                service to our smart technology, we are dedicated to making our properties feel like 
-                home.
+                <LinesAndParagraphs value={companyDescription.paragraphs}/>
             </_p>
             {/* <Button text={aboutSection.cta} /> */}
         </MissionStatement>

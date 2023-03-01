@@ -5,6 +5,7 @@ import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
 import GlobalStyle from '@/styles/global'
 import { useEffect } from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function App({ Component, pageProps }: AppProps) {
   // useEffect(() => {
@@ -39,6 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <ParallaxProvider>
         <Component {...pageProps} />
       </ParallaxProvider>
+      <Footer/>
     </>
   )
 }

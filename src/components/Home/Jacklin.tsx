@@ -1,8 +1,17 @@
-import styled from 'styled-components'
-import { Parallax } from 'react-scroll-parallax'
-import Image from 'next/image'
 import vw, { vwDesktop } from '@/styles/vw';
+import sanityClient from '@/utils/sanity/client';
+import { Parallax } from 'react-scroll-parallax';
+import { withAssetFileName } from '@/utils/sanity/index';
+import { useNextSanityImage } from 'next-sanity-image';
+import Image from 'next/image';
+import styled from 'styled-components';
+import { FeatureProject } from '../../../types';
+import LinesAndParagraphs from '../../GROQ/utils/LinesNParagraphs';
 import Button from '../Button';
+
+export interface JacklinProps {
+  featureProject: FeatureProject
+}
 
 const StyledJacklin = styled.section`
     width: 100%;
@@ -69,36 +78,36 @@ const _p = styled.p`
     ])} 
 `
 
-export default function Jacklin() {
+function MyImage({ image, alt }: { image: any, alt: string}) {
+  // @ts-ignore
+  const imageProps = useNextSanityImage(sanityClient, image)
+  return (
+    <>
+      {/*// @ts-ignore */}
+      <StyledImage {...imageProps} loader={withAssetFileName} alt={alt}/>
+    </>
+  )
+}
+
+export default function Jacklin({ featureProject }: JacklinProps) {
   return (
     <StyledJacklin>
         <Overlay />
         <JacklinResidences className="h2_large">
-            Jacklin<br />
-            Residences
+            <LinesAndParagraphs value={featureProject.title.lines}/>
         </JacklinResidences>
         <ImageWrapper>
-          <Parallax className="parallax" translateY={[-5, 0]} shouldAlwaysCompleteAnimation>
-            <StyledImage src={'/NCCA220049_3.jpg'} width={1920} height={1080} alt="Jacklin 1" />
-          </Parallax>
-          <Parallax className="parallax" translateY={[-10, 0]} shouldAlwaysCompleteAnimation>
-            <StyledImage src={'/NCCA220049_4.jpg'} width={1920} height={1080} alt="Jacklin 1" />
-          </Parallax>
-          <Parallax className="parallax" translateY={[-15, 0]} shouldAlwaysCompleteAnimation>
-          <StyledImage src={'/NCCA220049_5.jpg'} width={1920} height={1080} alt="Jacklin 1" />
-          </Parallax>
-          <Parallax className="parallax" translateY={[-20, 0]} shouldAlwaysCompleteAnimation>
-          <StyledImage src={'/NCCA220049_6.jpg'} width={1920} height={1080} alt="Jacklin 1" />
-          </Parallax>
+          {featureProject.projectImages.map((image, index) => 
+            (
+              <Parallax translateY={[-(index + 1) * 5, 0]} key={index} shouldAlwaysCompleteAnimation>
+                <MyImage image={image.image} alt={image.alt} />
+              </Parallax>
+            )
+          )}
         </ImageWrapper>
         <Description>
             <_p>
-              At OVIS Group, our mission is to be the premier developer of multi-family rental 
-              properties in the markets we serve. We strive to exceed the expectations of our 
-              residents by creating exceptional properties that are thoughtfully designed, expertly 
-              crafted, eco-friendly, and located in the most desirable neighborhoods. With a focus on 
-              innovation, service, and sustainability, we aim to be a leader in our industry and a 
-              valuable member of our communities.
+              <LinesAndParagraphs value={featureProject.desc.paragraphs}/>
             </_p>
             <Button text={"Explore"} />
         </Description>

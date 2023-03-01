@@ -52,18 +52,24 @@ export default function About({ aboutUsPage, theme }: AboutUsPageProps) {
       <Video autoPlay loop muted playsInline>
         <source src={backgroundVideo.url} />
       </Video>
-      <Hero valueProp={"Redefining Modern Western Coast Living Through Ethical Development Practices"}/>
-      <Company />
-      <PersonLeft />
-      <PersonRight />
-      <PersonLeft />
+      <Hero valueProp={aboutUsPage.valueProp}/>
+      <Company descriptionTitle={aboutUsPage.descriptionTitle} companyDescription={aboutUsPage.companyDescription}/>
+      {
+        aboutUsPage.partnerDetails.map((partnerDetail, index) => {
+          if (index % 2 == 0) {
+            return <PersonLeft key={index} partnerDetail={partnerDetail} />
+          } else {
+            return <PersonRight key={index} partnerDetail={partnerDetail} />
+          }
+        })
+      }
     </Root>
   )
 }
 
 export const getServerSideProps : GetServerSideProps<AboutUsPageProps> = async () => {
   const aboutUsPage = await fetchAboutUsPage('en');
-  console.log(aboutUsPage.partnerDetails[0].founderDescription);
+  console.log('asdsad', aboutUsPage.partnerDetails[0].content);
   const theme = await fetchTheme('en');
   return {
     props: {
