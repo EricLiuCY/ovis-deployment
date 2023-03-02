@@ -1,8 +1,8 @@
-import { createRef, useRef, useState } from 'react';
-import styled, { css } from 'styled-components';
 import ArrowRight from '@/assets/About/ArrowRight';
 import vw from '@/styles/vw';
 import { PortableText } from '@portabletext/react';
+import { useState } from 'react';
+import styled, { css } from 'styled-components';
 
 interface ContentBoxProps {
     content: { name: string, value: any}[],

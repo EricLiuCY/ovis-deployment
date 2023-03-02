@@ -1,4 +1,3 @@
-import { PortableText } from '@portabletext/react'
 import { getFileAsset } from '@sanity/asset-utils'
 import { GetServerSideProps } from 'next'
 import styled from 'styled-components'
