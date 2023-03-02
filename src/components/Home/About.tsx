@@ -6,6 +6,8 @@ import Button from '../Button';
 import Logo from '@/assets/Logo';
 import { AboutSection } from '../../../types';
 import LinesAndParagraphs from '../../GROQ/utils/LinesNParagraphs';
+import { redirect } from 'next/dist/server/api-utils';
+import Link from 'next/link';
 
 export interface AboutProps {
     aboutSection: AboutSection
@@ -72,7 +74,9 @@ export default function About({ aboutSection }: AboutProps) {
             <_p>
                 <LinesAndParagraphs value={aboutSection.missionStatement.paragraphs}/>
             </_p>
-            <Button text={aboutSection.cta} />
+            <Link href={"/about"} style={{ textDecoration: 'none'}}>
+                <Button text={aboutSection.cta} />  
+            </Link>
         </MissionStatement>
     </StyledAbout>
   )

@@ -57,7 +57,7 @@ const Reserved = styled.p`
     color: white;
     font-weight: 400;
     ${vw([
-        ['font-size', 16, 12, 8]
+        ['font-size', 15, 12, 8]
     ])}
 `
 

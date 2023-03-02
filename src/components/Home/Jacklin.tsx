@@ -3,6 +3,7 @@ import sanityClient from '@/utils/sanity/client';
 import { withAssetFileName } from '@/utils/sanity/index';
 import { useNextSanityImage } from 'next-sanity-image';
 import Image from 'next/image';
+import Link from 'next/link';
 import styled from 'styled-components';
 import { FeatureProject } from '../../../types';
 import LinesAndParagraphs from '../../GROQ/utils/LinesNParagraphs';
@@ -102,7 +103,9 @@ export default function Jacklin({ featureProject }: JacklinProps) {
             <_p>
               <LinesAndParagraphs value={featureProject.desc.paragraphs}/>
             </_p>
-            <Button text={"Explore"} />
+            <Link href={'jacklin'} style={{textDecoration: 'none'}}>
+              <Button text={"Explore"} />
+            </Link>
         </Description>
     </StyledJacklin>
   )

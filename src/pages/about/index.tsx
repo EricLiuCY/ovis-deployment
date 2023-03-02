@@ -7,8 +7,8 @@ import Company from '../../components/About/Company'
 import Hero from '../../components/About/Hero'
 import PersonLeft from '../../components/About/PersonLeft'
 import PersonRight from '../../components/About/PersonRight'
-import fetchAboutUsPage from '../../GROQ/quries/fetchAboutUsPage'
-import fetchTheme from '../../GROQ/quries/fetchTheme'
+import fetchAboutUsPage from '../../GROQ/queries/fetchAboutUsPage'
+import fetchTheme from '../../GROQ/queries/fetchTheme'
 import client from '../../utils/sanity/client'
 
 // const components = {

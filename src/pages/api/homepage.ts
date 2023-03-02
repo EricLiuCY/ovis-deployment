@@ -1,7 +1,7 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { Homepage } from '../../../types';
-import fetchHomePage from '../../GROQ/quries/fetchHomepage';
+import fetchHomePage from '../../GROQ/queries/fetchHomepage';
 
 type Data = {
   name: string
