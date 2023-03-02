@@ -60,7 +60,7 @@ const StyledImage = styled(Image)`
   object-fit: cover;
   ${vw([
     ['width', 200, '100%', '100%'],
-    ['height', '100%', 100, 50],
+    ['height', '90%', 100, 50],
   ])}
 `
 
@@ -100,7 +100,7 @@ export default function Jacklin({ featureProject }: JacklinProps) {
         <ImageWrapper>
           {featureProject.projectImages.map((image, index) => 
             (
-              <Parallax translateY={[-(index + 1) * 5, 0]} key={index} shouldAlwaysCompleteAnimation>
+              <Parallax translateY={[-(index - 2) * 8, 0]} key={index} shouldAlwaysCompleteAnimation>
                 <MyImage image={image.image} alt={image.alt} />
               </Parallax>
             )

@@ -2,7 +2,7 @@ import { JacklinPage } from '@/../types'
 import Hero from '@/components/Jacklin/Hero'
 import sanityClient from '@/utils/sanity/client'
 import { withAssetFileName } from '@/utils/sanity/index'
-import { GetServerSideProps } from 'next'
+import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { useNextSanityImage } from 'next-sanity-image'
 import styled from 'styled-components'
 import Gallery from '../../components/Jacklin/Gallery'
@@ -72,7 +72,7 @@ export default function JacklinResidences({ jacklinPage }: JacklinProps) {
   )
 }
 
-export const getServerSideProps : GetServerSideProps<JacklinProps> = async () => {
+export const getServerSideProps : GetServerSideProps<JacklinProps> = async (ctx: GetServerSidePropsContext) => {
   const jacklinPage = await fetchJacklinPage('en');
   return {
     props: {

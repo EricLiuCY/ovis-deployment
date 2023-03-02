@@ -6,6 +6,7 @@ import MenuBurger from '@/assets/Header/menu-burger';
 import MenuClose from '@/assets/Header/close-x';
 import { useScrollData } from '@/hooks/useScrollData';
 import { useState } from 'react';
+import axios from 'axios';
 
 interface HeaderProps {
     scrolledPast: boolean;
@@ -159,6 +160,11 @@ export default function Header() {
     })
     const [menuOpen, setMenuOpen] = useState(false)
     const openClose = () => setMenuOpen(!menuOpen);
+
+    const setLocale = async (locale: string) => {
+        await axios.post(`${window.location.origin}/api/locale`, { locale });
+    }
+
     return (
         <StyledHeader
             scrolledPast={scrollData.hasScrolledPast}
@@ -170,9 +176,9 @@ export default function Header() {
                 />
             </Link>
             {/* <Locales>
-                <LocaleButton className="strapline">EN</LocaleButton>
-                <LocaleButton className="strapline">FR</LocaleButton>
-                <LocaleButton className="strapline">中文</LocaleButton>
+                <LocaleButton className="strapline" onClick={() => setLocale('en')}>EN</LocaleButton>
+                <LocaleButton className="strapline" onClick={() => setLocale('fr')}>FR</LocaleButton>
+                <LocaleButton className="strapline" onClick={() => setLocale('zhs')}>中文</LocaleButton>
             </Locales> */}
             
             <MenuButton onClick={openClose}>
