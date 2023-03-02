@@ -1,5 +1,6 @@
 import vw, { vwDesktop } from '@/styles/vw';
 import sanityClient from '@/utils/sanity/client';
+import { Parallax } from 'react-scroll-parallax';
 import { withAssetFileName } from '@/utils/sanity/index';
 import { useNextSanityImage } from 'next-sanity-image';
 import Image from 'next/image';
@@ -97,7 +98,13 @@ export default function Jacklin({ featureProject }: JacklinProps) {
             <LinesAndParagraphs value={featureProject.title.lines}/>
         </JacklinResidences>
         <ImageWrapper>
-          {featureProject.projectImages.map((image, index) => <MyImage key={index} image={image.image} alt={image.alt} />)}
+          {featureProject.projectImages.map((image, index) => 
+            (
+              <Parallax translateY={[-(index + 1) * 5, 0]} key={index} shouldAlwaysCompleteAnimation>
+                <MyImage image={image.image} alt={image.alt} />
+              </Parallax>
+            )
+          )}
         </ImageWrapper>
         <Description>
             <_p>
