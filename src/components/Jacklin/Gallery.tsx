@@ -3,6 +3,7 @@ import sanityClient from '@/utils/sanity/client';
 import { withAssetFileName } from '@/utils/sanity/index';
 import { useNextSanityImage } from 'next-sanity-image';
 import Image from 'next/image';
+import { Parallax } from 'react-scroll-parallax';
 import styled from 'styled-components';
 import { JacklinSection2 } from '../../../types';
 import LinesAndParagraphs from '../../GROQ/utils/LinesNParagraphs';
@@ -57,10 +58,9 @@ const StyledImage = styled(Image)`
   object-fit: cover;
   ${vw([
     ['width', 200, '100%', '100%'],
-    ['height', '100%', 100, 50],
+    ['height', '90%', 100, 50],
   ])}
 `
-
 const Description = styled.p`
     ${vw([
         ['position', 'absolute', 'relative', 'relative'],
@@ -89,7 +89,13 @@ export default function Gallery({ jacklinSection2 }: GalleryProps) {
           <LinesAndParagraphs value={jacklinSection2.title.lines}/>
         </JacklinResidences>
         <ImageWrapper>
-          {jacklinSection2.imageGallery.map((image, index) => (<MyImage key={index} image={image.image} alt={image.alt}/>))}
+          {jacklinSection2.imageGallery.map((image, index) => 
+            (
+              <Parallax translateY={[-(index - 2) * 8, 0]} key={index} shouldAlwaysCompleteAnimation>
+                <MyImage image={image.image} alt={image.alt} />
+              </Parallax>
+            )
+          )}
         </ImageWrapper>
         <Description>
           <LinesAndParagraphs value={jacklinSection2.description.paragraphs}/>
