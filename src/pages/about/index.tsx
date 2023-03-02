@@ -69,7 +69,6 @@ export default function About({ aboutUsPage, theme }: AboutUsPageProps) {
 
 export const getServerSideProps : GetServerSideProps<AboutUsPageProps> = async () => {
   const aboutUsPage = await fetchAboutUsPage('en');
-  console.log('asdsad', aboutUsPage.partnerDetails[0].content);
   const theme = await fetchTheme('en');
   return {
     props: {

@@ -1,10 +1,10 @@
-import { AboutUsPage } from '../../../types';
+import { JacklinPage } from '../../../types';
 import { sanityFetch } from '../../utils/sanity/client';
-import aboutUsPageGroq from '../fragments/aboutUsPage';
+import JacklinPageGROQ from '../fragments/jacklinPage';
 
-const fetchAboutUsPage = async (lang: string) : Promise<AboutUsPage> => {
-  const data = await sanityFetch(aboutUsPageGroq, lang)
+const fetchJacklinPage = async (lang: string) : Promise<JacklinPage> => {
+  const data = await sanityFetch(JacklinPageGROQ, lang)
   return data
 }
 
-export default fetchAboutUsPage;
+export default fetchJacklinPage;

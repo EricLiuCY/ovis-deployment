@@ -1,14 +1,11 @@
 import vw from '@/styles/vw';
-import { Parallax } from 'react-scroll-parallax';
 import styled from 'styled-components';
-import Button from '../Button';
 
-import Logo from '@/assets/Logo';
-import { AboutSection } from '../../../types';
+import { JacklinSection1 } from '../../../types';
 import LinesAndParagraphs from '../../GROQ/utils/LinesNParagraphs';
 
-export interface AboutProps {
-    aboutSection: AboutSection
+export interface InfoProps {
+    jacklinSection1: JacklinSection1
 }
 
 const StyledInfo = styled.section`
@@ -96,26 +93,22 @@ const StatusInfo = styled.p`
     
 `
 
-export default function Info() {
+export default function Info({ jacklinSection1 }: InfoProps) {
   return (
     <StyledInfo>
         <Overlay />
         <Title className="h2_large">
-            Langford&apos;s<br />
-            First Concrete<br/>
-            Highrise
+            <LinesAndParagraphs value={jacklinSection1.title.lines}/>
         </Title>
         <ProjectName className="strapline">Jacklin Residences</ProjectName>
         <Content>
             <StatusBlock>
-                <StatusInfo className="strapline">Coming Soon</StatusInfo>
-                <StatusInfo className="strapline">80 Units | 10 Stories</StatusInfo>
+                <StatusInfo className="strapline">
+                    <LinesAndParagraphs value={jacklinSection1.caption.lines}/>
+                </StatusInfo>
             </StatusBlock>
             <Description>
-                Premier living experience with a focus on ethical, sustainable, and innovative 
-                development practices. Premier living experience with a focus on ethical, 
-                sustainable, and innovative development practices. Premier living experience with a 
-                focus on ethical, sustainable, and innovative development practices.
+                <LinesAndParagraphs value={jacklinSection1.description.paragraphs}/>
             </Description>
         </Content>
         

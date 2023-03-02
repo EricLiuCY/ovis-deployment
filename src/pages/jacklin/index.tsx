@@ -1,20 +1,16 @@
-import { GetServerSideProps } from 'next'
-import styled from 'styled-components'
-import { Homepage, Theme } from '@/../types'
-import About from '@/components/Home/About'
+import { JacklinPage } from '@/../types'
 import Hero from '@/components/Jacklin/Hero'
-import Jacklin from '@/components/Home/Jacklin'
-import fetchHomePage from '@/GROQ/queries/fetchHomepage'
-import fetchTheme from '@/GROQ/queries/fetchTheme'
-import { getFileAsset } from '@sanity/asset-utils'
-import client from '@/utils/sanity/client'
-import PartnerOverview from '@/components/Home/PartnerOverviews'
-import Info from '../../components/Jacklin/Info'
+import sanityClient from '@/utils/sanity/client'
+import { withAssetFileName } from '@/utils/sanity/index'
+import { GetServerSideProps } from 'next'
+import { useNextSanityImage } from 'next-sanity-image'
+import styled from 'styled-components'
 import Gallery from '../../components/Jacklin/Gallery'
+import Info from '../../components/Jacklin/Info'
+import fetchJacklinPage from '../../GROQ/queries/fetchJacklinPage'
 
 export interface JacklinProps {
-  homepage: Homepage
-  theme: Theme
+  jacklinPage: JacklinPage
 }
 
 const Video = styled.video`
@@ -43,7 +39,18 @@ const Root = styled.main`
   position: relative;
 `
 
-export default function Home({ homepage, theme }: JacklinProps) {
+function MyImage({ image, alt }: { image: any, alt: string}) {
+  // @ts-ignore
+  const imageProps = useNextSanityImage(sanityClient, image)
+  return (
+    <>
+      {/*// @ts-ignore */}
+      <Background {...imageProps} loader={withAssetFileName} alt={alt}/>
+    </>
+  )
+}
+
+export default function JacklinResidences({ jacklinPage }: JacklinProps) {
   // const videoAssetFor = (source: any) => source && getFileAsset(source, client.config())
   // const backgroundVideo = videoAssetFor(theme.backgroundVideo)
   return (
@@ -52,25 +59,24 @@ export default function Home({ homepage, theme }: JacklinProps) {
       {/* <Video autoPlay loop muted playsInline>
         <source src={backgroundVideo.url} />
       </Video> */}
-      <Background
-        src={"https://cdn.discordapp.com/attachments/709193098412032081/1080436997979635812/VIEW_01.jpg"}
+      <MyImage
+        image={jacklinPage.backgroundImage.image}
+        alt={jacklinPage.backgroundImage.alt}
       />
 
       {/* Page Structure */}
-      <Hero valueProp={homepage.valueProp}/>
-      <Info />
-      <Gallery />
+      <Hero valueProp={jacklinPage.valueProp}/>
+      <Info jacklinSection1={jacklinPage.jacklinSection1}/>
+      <Gallery jacklinSection2={jacklinPage.jacklinSection2}/>
     </Root>
   )
 }
 
 export const getServerSideProps : GetServerSideProps<JacklinProps> = async () => {
-  const homepage = await fetchHomePage('en');
-  const theme = await fetchTheme('en');
+  const jacklinPage = await fetchJacklinPage('en');
   return {
     props: {
-      homepage,
-      theme
+      jacklinPage,
     },
   }
 }

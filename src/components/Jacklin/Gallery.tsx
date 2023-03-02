@@ -1,7 +1,15 @@
-import styled from 'styled-components'
-import Image from 'next/image'
 import vw, { vwDesktop } from '@/styles/vw';
-import Button from '../Button';
+import sanityClient from '@/utils/sanity/client';
+import { withAssetFileName } from '@/utils/sanity/index';
+import { useNextSanityImage } from 'next-sanity-image';
+import Image from 'next/image';
+import styled from 'styled-components';
+import { JacklinSection2 } from '../../../types';
+import LinesAndParagraphs from '../../GROQ/utils/LinesNParagraphs';
+
+export interface GalleryProps {
+  jacklinSection2: JacklinSection2
+}
 
 const StyledJacklin = styled.section`
     width: 100%;
@@ -62,28 +70,29 @@ const Description = styled.p`
     ])}
 `;
 
+function MyImage({ image, alt }: { image: any, alt: string}) {
+  // @ts-ignore
+  const imageProps = useNextSanityImage(sanityClient, image)
+  return (
+    <>
+      {/*// @ts-ignore */}
+      <StyledImage {...imageProps} loader={withAssetFileName} alt={alt}/>
+    </>
+  )
+}
 
-export default function Gallery() {
+export default function Gallery({ jacklinSection2 }: GalleryProps) {
   return (
     <StyledJacklin>
         <Overlay />
         <JacklinResidences className="h2_large">
-            Disrupting<br/>
-            Victoria&apos;s<br/>
-            Luxury<br/>
-            Rentals
+          <LinesAndParagraphs value={jacklinSection2.title.lines}/>
         </JacklinResidences>
         <ImageWrapper>
-          <StyledImage src={'/NCCA220049_3.jpg'} width={1920} height={1080} alt="Jacklin 1" />
-          <StyledImage src={'/NCCA220049_4.jpg'} width={1920} height={1080} alt="Jacklin 1" />
-          <StyledImage src={'/NCCA220049_5.jpg'} width={1920} height={1080} alt="Jacklin 1" />
-          <StyledImage src={'/NCCA220049_6.jpg'} width={1920} height={1080} alt="Jacklin 1" />
+          {jacklinSection2.imageGallery.map((image, index) => (<MyImage key={index} image={image.image} alt={image.alt}/>))}
         </ImageWrapper>
         <Description>
-            A 10 story tall concrete building with 80 residential condos and 3 commercial units. 
-            A 10 story tall concrete building with 80 residential condos and 3 commercial units. 
-            A 10 story tall concrete building with 80 residential condos and 3 commercial units. 
-            A 10 story tall concrete building with 80 residential condos and 3 commercial units. 
+          <LinesAndParagraphs value={jacklinSection2.description.paragraphs}/>
         </Description>
     </StyledJacklin>
   )

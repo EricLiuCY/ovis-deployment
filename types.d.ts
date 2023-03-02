@@ -140,11 +140,11 @@ export interface JacklinPage extends SanityDocument {
   name: string;
 
   /**
-   * Value Proposition — `string`
+   * Value Proposition — `localeLines`
    *
    *
    */
-  valueProp: string;
+  valueProp: LocaleLines;
 
   /**
    * Background Image — `imageWithAlt`
@@ -253,7 +253,7 @@ export type PartnerDetail = {
    *
    *
    */
-  name: string;
+  name: "SEBASTIEN" | "JACKY" | "SEAN";
 
   /**
    * Profile Picture — `imageWithAlt`
@@ -408,32 +408,25 @@ export type JacklinSection1 = {
   name: string;
 
   /**
-   * Title — `string`
+   * Title — `localeLines`
    *
    *
    */
-  title: string;
+  title: LocaleLines;
 
   /**
-   * Caption Line 1 — `string`
+   * Caption — `localeLines`
    *
    *
    */
-  caption1: string;
+  caption: LocaleLines;
 
   /**
-   * Caption Line 2 — `string`
+   * Description — `localeParagraphs`
    *
    *
    */
-  caption2: string;
-
-  /**
-   * Description — `string`
-   *
-   *
-   */
-  description: string;
+  description: LocaleParagraphs;
 };
 
 export type JacklinSection2 = {
@@ -446,18 +439,18 @@ export type JacklinSection2 = {
   name: string;
 
   /**
-   * Title — `string`
+   * Title — `localeLines`
    *
    *
    */
-  title: string;
+  title: LocaleLines;
 
   /**
-   * Description — `string`
+   * Description — `localeParagraphs`
    *
    *
    */
-  description: string;
+  description: LocaleParagraphs;
 
   /**
    * Image Gallery — `array`
