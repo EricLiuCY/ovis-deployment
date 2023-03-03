@@ -44,6 +44,7 @@ interface ButtonProps {
 }
 
 export default function Button(props: ButtonProps) {
+    
     return (
         <StyledButton onClick={props.onClick}>
             <span className='button'>{props.text}</span>
